@@ -1,58 +1,170 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Agende seu rodízio | Ledú Pizzas</title>
-  <link rel="icon" href="../shared/assets/logo.png">
-  <link rel="stylesheet" href="../shared/base.css">
-  <script type="module" src="agendamento.js"></script>
-</head>
-<body data-brand="pizzas">
-  <header class="site-header" data-header></header>
-  <main class="booking" id="conteudo">
-    <div class="booking__intro">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 2v6m10-6v6M3 11h18"/></svg>
-      <h1>Agende seu rodízio</h1>
-      <p>Escolha os detalhes da experiência para reunir todo mundo à mesa.</p>
-    </div>
-    <form class="container booking__layout" data-booking-form>
-      <div class="booking__fields">
-        <fieldset>
-          <legend>1. Quando será?</legend>
-          <div class="field-row">
-            <div class="field"><label for="data">Data</label><input id="data" name="data" type="date" required></div>
-            <div class="field"><label for="horario">Horário</label><input id="horario" name="horario" type="time" required></div>
-          </div>
-        </fieldset>
-        <fieldset><legend>2. Para quantas pessoas?</legend><div data-people-control></div></fieldset>
-        <fieldset>
-          <legend>3. Onde vamos servir?</legend>
-          <div class="field-row">
-            <div class="field"><label for="endereco">Endereço</label><input id="endereco" name="endereco" placeholder="Rua, número e bairro" autocomplete="street-address" minlength="5" maxlength="180" required></div>
-            <div class="field"><label for="complemento">Complemento (opcional)</label><input id="complemento" name="complemento" placeholder="Casa, apto…" maxlength="80"></div>
-          </div>
-        </fieldset>
-        <!-- Contato foi autorizado para permitir o retorno sobre o agendamento. -->
-        <fieldset>
-          <legend>4. Como podemos falar com você?</legend>
-          <div class="field-row">
-            <div class="field"><label for="nome">Nome</label><input id="nome" name="nome" autocomplete="name" minlength="2" maxlength="80" required></div>
-            <div class="field"><label for="telefone">Telefone com DDD</label><input id="telefone" name="telefone" type="tel" autocomplete="tel" placeholder="(34) 99999-9999" maxlength="22" required></div>
-          </div>
-        </fieldset>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Agende seu rodízio | Ledú Pizzas</title>
+    <link rel="icon" href="../shared/assets/logo.png">
+    <link rel="stylesheet" href="../shared/base.css">
+  </head>
+  <body data-brand="pizzas">
+    <header class="site-header" data-header="">
+      <!-- Futuro nav.js: compartilhar este cabeçalho após estudar manipulação do DOM. -->
+      <a class="skip-link button" href="#conteudo">Pular para o conteúdo</a>
+      <div class="announcement">Carmo do Paranaíba, Minas Gerais · Uma casa, três experiências</div>
+      <nav class="nav" aria-label="Navegação principal">
+        <a class="nav__logo" href="index.html" aria-label="Ledú Pizzas — início">
+          <img src="../shared/assets/logo.png" width="48" height="48" alt="">
+          <span>Ledú Pizzas</span>
+        </a>
+        <ul class="nav__links">
+          <li>
+            <a href="../index.html">Grupo Ledú</a>
+          </li>
+          <li>
+            <a href="../store/index.html">Store</a>
+          </li>
+          <li>
+            <a href="../wine/index.html">Wine</a>
+          </li>
+          <li>
+            <a href="index.html" aria-current="true">Pizzas</a>
+          </li>
+        </ul>
+        <div class="nav__actions">
+          <a class="icon-button" data-account="" href="../shared/login.html" aria-label="Entrar na sua conta">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"></circle>
+              <circle cx="12" cy="9" r="3"></circle>
+              <path d="M6 18a6 6 0 0 1 12 0"></path>
+            </svg>
+          </a>
+        </div>
+      </nav>
+    </header>
+    <main class="booking" id="conteudo">
+      <div class="booking__intro">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3" y="5" width="18" height="16" rx="2"></rect>
+          <path d="M7 2v6m10-6v6M3 11h18"></path>
+        </svg>
+        <h1>Agende seu rodízio</h1>
+        <p>Escolha os detalhes da experiência para reunir todo mundo à mesa.</p>
       </div>
-      <aside class="summary booking__summary" aria-labelledby="resumo">
-        <p class="section__eyebrow">Resumo do agendamento</p>
-        <h2 id="resumo">Rodízio em casa</h2>
-        <ul data-booking-summary aria-live="polite" aria-atomic="true"></ul>
-        <p class="notice">O agendamento depende da confirmação de disponibilidade e dos detalhes com a equipe.</p>
-        <button class="button button--full" type="submit">Solicitar agendamento</button>
-        <p class="status" data-booking-status role="status"></p>
-      </aside>
-    </form>
-  </main>
-  <footer class="site-footer" data-footer></footer>
-  <noscript><p class="container">Ative o JavaScript para preencher o agendamento.</p></noscript>
-</body>
+      <form class="container booking__layout" data-booking-form="">
+        <!-- Próxima etapa: implementar os eventos com JavaScript. O envio permanece desativado. -->
+        <div class="booking__fields">
+          <fieldset>
+            <legend>1. Quando será?</legend>
+            <div class="field-row">
+              <div class="field">
+                <label for="data">Data</label>
+                <input id="data" name="data" type="date" required="" lang="pt-BR">
+              </div>
+              <div class="field">
+                <label for="horario">Horário</label>
+                <input id="horario" name="horario" type="time" required="">
+              </div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>2. Para quantas pessoas?</legend>
+            <div class="field">
+              <label for="pessoas">Número de pessoas</label>
+              <input id="pessoas" name="pessoas" type="number" min="1" max="200" value="15" required>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>3. Onde vamos servir?</legend>
+            <div class="field-row">
+              <div class="field">
+                <label for="endereco">Endereço</label>
+                <input id="endereco" name="endereco" placeholder="Rua, número e bairro" autocomplete="street-address" minlength="5" maxlength="180" required="">
+              </div>
+              <div class="field">
+                <label for="complemento">Complemento (opcional)</label>
+                <input id="complemento" name="complemento" placeholder="Casa, apto…" maxlength="80">
+              </div>
+            </div>
+          </fieldset>
+          <!-- Contato foi autorizado para permitir o retorno sobre o agendamento. -->
+          <fieldset>
+            <legend>4. Como podemos falar com você?</legend>
+            <div class="field-row">
+              <div class="field">
+                <label for="nome">Nome</label>
+                <input id="nome" name="nome" autocomplete="name" minlength="2" maxlength="80" required="">
+              </div>
+              <div class="field">
+                <label for="telefone">Telefone com DDD</label>
+                <input id="telefone" name="telefone" type="tel" autocomplete="tel" placeholder="(34) 99999-9999" maxlength="22" required="">
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <aside class="summary booking__summary" aria-labelledby="resumo">
+          <p class="section__eyebrow">Resumo do agendamento</p>
+          <h2 id="resumo">Rodízio em casa</h2>
+          <ul data-booking-summary="">
+            <li>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="16" rx="2"></rect>
+                <path d="M7 2v6m10-6v6M3 11h18m-12 4h.01M12 15h.01M16 15h.01M8 18h.01M12 18h.01M16 18h.01"></path>
+              </svg>
+              <span data-date-summary="">Data a informar</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="9"></circle>
+                <path d="M12 6v6l4 2"></path>
+              </svg>
+              <span data-time-summary="">Horário a informar</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="8" cy="8" r="3"></circle>
+                <circle cx="17" cy="8" r="2"></circle>
+                <path d="M2 21v-3a6 6 0 0 1 12 0v3H2Zm14-8a5 5 0 0 1 6 5v3h-5"></path>
+              </svg>
+              <span data-people-summary="">15 pessoas</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <span data-address-summary="">Endereço a informar</span>
+            </li>
+          </ul>
+          <p class="notice" id="agendamento-nota">Resumo ilustrativo. O preenchimento dos campos não atualiza este resumo nem envia uma solicitação.</p>
+          <button class="button button--full" type="submit" disabled title="Disponível em uma próxima etapa" aria-describedby="agendamento-nota">Solicitar agendamento</button>
+          <p class="status" data-booking-status="" role="status"></p>
+        </aside>
+      </form>
+    </main>
+    <footer class="site-footer" data-footer="">
+      <!-- Rodapé escrito no HTML para funcionar sem JavaScript. -->
+      <div class="container footer">
+        <div class="footer__identity">
+          <img src="../shared/assets/logo-claro.png" width="48" height="48" alt="">
+          <div>
+            <p class="footer__title">Grupo Ledú</p>
+            <p class="footer__description">Moda, vinhos e sabores reunidos por uma mesma forma de receber.</p>
+          </div>
+        </div>
+        <div>
+          <h2 class="footer__heading">Nossas marcas</h2>
+          <div class="footer__links">
+            <a href="../store/index.html">Ledú Store</a>
+            <a href="../wine/index.html">Ledú Wine</a>
+            <a href="index.html">Ledú Pizzas</a>
+          </div>
+        </div>
+        <div>
+          <h2 class="footer__heading">Visite-nos</h2>
+          <address>Rua Costa Junior, 440 – Centro<br>Carmo do Paranaíba – MG<br>CEP: 38840-024<br>Brasil</address>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>

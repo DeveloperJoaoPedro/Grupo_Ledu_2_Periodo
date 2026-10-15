@@ -1,42 +1,99 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sua conta | Grupo Ledú</title>
-  <link rel="icon" href="assets/logo.png">
-  <link rel="stylesheet" href="base.css">
-  <script type="module" src="login.js"></script>
-</head>
-<body>
-  <header class="site-header" data-header></header>
-  <main class="login" id="conteudo">
-    <div class="login__visual">
-      <img src="assets/login.jpg" alt="Taça de vinho e pizza em uma composição com tecido bordô" width="1854" height="2180" fetchpriority="high">
-      <blockquote class="login__quote">“Tudo que você gosta, reunido em uma só conta.”</blockquote>
-    </div>
-    <section class="login__content" aria-labelledby="boas-vindas">
-      <h1 id="boas-vindas">Boas-vindas</h1>
-      <p class="login__description">Acesse Store, Wine, Pizzas com a mesma conta.</p>
-      <div class="login__tabs" role="group" aria-label="Opções de acesso">
-        <button class="login__tab" type="button" aria-pressed="true">Entrar</button>
-        <button class="login__tab" type="button" data-sign-up>Criar conta</button>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sua conta | Grupo Ledú</title>
+    <link rel="icon" href="assets/logo.png">
+    <link rel="stylesheet" href="base.css">
+  </head>
+  <body>
+    <header class="site-header" data-header="">
+      <!-- Futuro nav.js: compartilhar este cabeçalho após estudar manipulação do DOM. -->
+      <a class="skip-link button" href="#conteudo">Pular para o conteúdo</a>
+      <div class="announcement">Carmo do Paranaíba, Minas Gerais · Uma casa, três experiências</div>
+      <nav class="nav" aria-label="Navegação principal">
+        <a class="nav__logo" href="../index.html" aria-label="Ledú — início">
+          <img src="assets/logo.png" width="48" height="48" alt="">
+          <span>Ledú</span>
+        </a>
+        <ul class="nav__links">
+          <li>
+            <a href="../index.html">Grupo Ledú</a>
+          </li>
+          <li>
+            <a href="../store/index.html">Store</a>
+          </li>
+          <li>
+            <a href="../wine/index.html">Wine</a>
+          </li>
+          <li>
+            <a href="../pizzas/index.html">Pizzas</a>
+          </li>
+        </ul>
+        <div class="nav__actions">
+          <a class="icon-button" data-account="" href="login.html" aria-label="Entrar na sua conta">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"></circle>
+              <circle cx="12" cy="9" r="3"></circle>
+              <path d="M6 18a6 6 0 0 1 12 0"></path>
+            </svg>
+          </a>
+        </div>
+      </nav>
+    </header>
+    <main class="login" id="conteudo">
+      <div class="login__visual">
+        <img src="assets/login.jpg" alt="Taça de vinho e pizza em uma composição com tecido bordô" width="1854" height="2180" fetchpriority="high">
+        <blockquote class="login__quote">“Tudo que você gosta, reunido em uma só conta.”</blockquote>
       </div>
-      <form class="login__form" data-login-form>
-        <div class="field"><label for="email">E-mail</label><input id="email" name="email" type="email" autocomplete="email" placeholder="voce@exemplo.com" maxlength="254" required></div>
-        <div class="field"><label for="senha">Senha</label><input id="senha" name="senha" type="password" autocomplete="current-password" placeholder="sua senha" minlength="6" maxlength="128" required></div>
-        <button class="button button--full" type="submit">Entrar</button>
-        <button class="text-button" type="button" data-recover>Esqueci minha senha</button>
-      </form>
-      <p class="status" role="status" data-login-status></p>
-      <div class="login__session" data-session hidden>
-        <p>Você está conectado como <strong data-email></strong>.</p>
-        <a class="button" href="../index.html">Continuar no Grupo Ledú</a>
-        <button class="text-button" type="button" data-sign-out>Sair da conta</button>
+      <section class="login__content" aria-labelledby="boas-vindas">
+        <h1 id="boas-vindas">Boas-vindas</h1>
+        <p class="login__description">Acesse Store, Wine, Pizzas com a mesma conta.</p>
+        <div class="login__tabs" role="group" aria-label="Opções de acesso">
+          <button class="login__tab" type="button" aria-pressed="true" disabled title="Disponível em uma próxima etapa">Entrar</button>
+          <button class="login__tab" type="button" data-sign-up="" disabled title="Disponível em uma próxima etapa">Criar conta</button>
+        </div>
+        <p class="notice" id="acesso-nota">O acesso à conta ainda não está disponível.</p>
+        <form class="login__form" data-login-form="" aria-describedby="acesso-nota">
+          <!-- Próxima etapa: implementar os eventos com JavaScript. O envio permanece desativado. -->
+          <div class="field">
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="voce@exemplo.com" maxlength="254" required="">
+          </div>
+          <div class="field">
+            <label for="senha">Senha</label>
+            <input id="senha" name="senha" type="password" autocomplete="current-password" placeholder="sua senha" minlength="6" maxlength="128" required="">
+          </div>
+          <button class="button button--full" type="submit" disabled title="Disponível em uma próxima etapa">Entrar</button>
+          <button class="text-button" type="button" data-recover="" disabled title="Disponível em uma próxima etapa">Esqueci minha senha</button>
+        </form>
+        <p class="status" role="status" data-login-status=""></p>
+      </section>
+    </main>
+    <footer class="site-footer" data-footer="">
+      <!-- Rodapé escrito no HTML para funcionar sem JavaScript. -->
+      <div class="container footer">
+        <div class="footer__identity">
+          <img src="assets/logo-claro.png" width="48" height="48" alt="">
+          <div>
+            <p class="footer__title">Grupo Ledú</p>
+            <p class="footer__description">Moda, vinhos e sabores reunidos por uma mesma forma de receber.</p>
+          </div>
+        </div>
+        <div>
+          <h2 class="footer__heading">Nossas marcas</h2>
+          <div class="footer__links">
+            <a href="../store/index.html">Ledú Store</a>
+            <a href="../wine/index.html">Ledú Wine</a>
+            <a href="../pizzas/index.html">Ledú Pizzas</a>
+          </div>
+        </div>
+        <div>
+          <h2 class="footer__heading">Visite-nos</h2>
+          <address>Rua Costa Junior, 440 – Centro<br>Carmo do Paranaíba – MG<br>CEP: 38840-024<br>Brasil</address>
+        </div>
       </div>
-    </section>
-  </main>
-  <footer class="site-footer" data-footer></footer>
-  <noscript><p class="container">Ative o JavaScript para acessar sua conta.</p></noscript>
-</body>
+    </footer>
+  </body>
 </html>

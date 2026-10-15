@@ -1,140 +1,120 @@
-# Grupo Ledú — Projeto Integrador
+# Grupo Ledú — HTML e CSS para aprender
 
-Front-end acadêmico do curso de Sistemas de Informação do UNIPAM, para o
-Grupo Ledú de Carmo do Paranaíba, MG. HTML5, CSS3 e JavaScript puro com ES
-modules. Sem frameworks, bibliotecas de front-end, bundlers ou etapa de build.
+Projeto Integrador do curso de Sistemas de Informação do UNIPAM, para o Grupo
+Ledú de Carmo do Paranaíba, MG.
 
-## Executar
+A branch `main` contém a versão **estática, sem JavaScript**, para o grupo
+implementar as funcionalidades à mão. A implementação anterior com JavaScript
+está preservada na branch `feat/grupo-ledu-frontend` e no histórico do Git.
 
-Na raiz do repositório:
+## Abrir o projeto
+
+O ponto de entrada é `index.html` da raiz. Os caminhos são relativos: a navegação
+funciona com JavaScript desativado, sem instalar pacotes ou fazer build.
+
+Para conferir usando um servidor local, execute na raiz:
 
 ```sh
 python3 -m http.server 8000 --bind 127.0.0.1
 ```
 
-Abra o servidor no seu navegador, usando a porta escolhida. O ponto de entrada
-é `index.html` na raiz. Use HTTP: abrir diretamente com `file://` impede o
-carregamento dos ES modules em alguns navegadores. Não é necessário instalar
-pacotes ou configurar credenciais. Fotos, logotipos e fontes estão no projeto.
+Sirva a raiz inteira: Store, Wine e Pizzas usam o CSS e as imagens de `shared/`.
+O protótipo antigo em `página principal/` foi preservado; não é o ponto de entrada
+da aplicação atual. Seu `app.js` original está vazio e não é carregado.
 
-O protótipo anterior em `página principal/` foi preservado; a aplicação atual
-começa na raiz. O servidor deve servir a raiz inteira, pois as marcas
-compartilham os arquivos de `shared/`.
+## O que funciona agora
 
-## Telas
+- Navegação entre a instituição, marcas, login, produtos e sacolas de exemplo.
+- Fotos, fontes e logotipos locais, sem consultas a serviços externos.
+- Layout responsivo, links de pular para o conteúdo e estados de hover/foco.
+- Seleção de tamanhos com radio buttons e CSS.
+- Preenchimento dos campos de login e agendamento, incluindo os controles
+  nativos de data, horário e número de pessoas.
 
-| Referência do export | Arquivo |
+Os preços, itens das sacolas, descontos e resumos são **exemplos escritos no
+HTML**. Alterar campos não recalcula valores. Não há login, envio, persistência
+de dados, cobrança ou comunicação com Firebase. Os botões dessas funções estão
+desativados com `disabled`, evitando prometer ações que ainda não existem.
+
+Os formulários conservam labels, tipos e restrições nativas (`required`, `min`,
+`max`, `minlength`). O envio está desativado; não há destino que receba os dados.
+
+## Onde editar
+
+| Tela | Arquivo |
 | --- | --- |
-| Home | `index.html` |
-| login | `shared/login.html` |
-| Ledu Store | `store/index.html` |
-| Ledu Store venda | `store/produto.html` |
-| Carrinho Store | `store/carrinho.html` |
-| Ledu Wine | `wine/index.html` |
-| Ledu Wine Venda | `wine/produto.html` |
-| Carrinho Wine | `wine/carrinho.html` |
-| Ledu Pizza | `pizzas/index.html` |
-| Ledu Pizza venda | `pizzas/agendamento.html` |
+| Institucional | `index.html` |
+| Login compartilhado | `shared/login.html` |
+| Home e seleção Store | `store/index.html` |
+| Vestido Serena | `store/produto.html` |
+| Outros detalhes Store | `store/blazer-iris.html`, `store/conjunto-aurora.html`, `store/vestido-yara.html` |
+| Sacola Store | `store/carrinho.html` |
+| Home e seleção Wine | `wine/index.html` |
+| Pérgola | `wine/produto.html` |
+| Outros detalhes Wine | `wine/barolo.html`, `wine/chianti.html`, `wine/garzon.html`, `wine/kagor.html` |
+| Sacola Wine | `wine/carrinho.html` |
+| Home e sabores Pizzas | `pizzas/index.html` |
+| Agendamento | `pizzas/agendamento.html` |
 
-`produto.html?id=vestido-serena` e `produto.html?id=garzon` são exemplos de
-detalhes dinâmicos. Sem parâmetro, os detalhes abrem os produtos mostrados nos
-PDFs: Vestido Serena e Pérgola. IDs desconhecidos exibem uma mensagem com retorno
-à coleção. O mesmo template permite consultar os demais produtos mockados.
+São os dez layouts aprovados, com sete variações adicionais do mesmo detalhe
+para que cada card abra o produto correto sem depender de parâmetros ou scripts.
+Cada página já contém cabeçalho, rodapé e conteúdo completos. Essa repetição é
+intencional nesta etapa; para mudar a navegação, edite os cabeçalhos dos HTMLs.
 
-## Organização e edição
+`shared/base.css` reúne os tokens em `:root`, componentes, Grid/Flexbox e os
+breakpoints de tablet/desktop. Cada marca sobrescreve apenas `--accent`.
+Fotos, logos e fontes estão em `shared/assets/`.
 
-- `shared/base.css`: tokens em `:root`, estilos comuns, Grid/Flexbox, estados de
-  foco e hover, breakpoints de 48rem e 75rem e redução de movimento.
-- `shared/nav.js`: cabeçalho, navegação, contador da sacola e rodapé comuns.
-- `shared/auth.js`: sessão mock e comentários `// TODO Firebase:` para integração.
-- `shared/login.js`: comportamento do formulário de acesso.
-- `shared/catalogo.js` e `shared/produto.js`: coleção e detalhe das duas lojas.
-- `shared/carrinho.js`: persistência e regras monetárias; `shared/sacola.js`:
-  interação da página da sacola.
-- `shared/storage.js`: leitura defensiva e alternativa em memória se o navegador
-  bloquear gravações; `shared/ui.js`: ícones, moeda e controles compartilhados.
-- `store/data/produtos.js`, `wine/data/produtos.js` e `pizzas/data/sabores.js`:
-  dados de demonstração, separados do comportamento.
-- `pizzas/agendamento.js`: data, horário, pessoas, endereço, nome, telefone e
-  resumo atualizado. Pizzas não possui sacola.
+## Próximos exercícios de JavaScript
 
-Para editar textos e produtos, comece pelos HTMLs e arquivos de dados. Para
-alterar cores, tamanhos e fontes, use os tokens de `shared/base.css`. Cada marca
-sobrescreve apenas `--accent`; os fundos das seções usam tokens compartilhados.
+Os atributos `data-*` e comentários nos HTMLs indicam pontos de integração.
+Eles não executam código. Uma ordem possível para estudar:
 
-## Fluxos de demonstração
+1. Criar `shared/nav.js` e aprender a selecionar e alterar elementos do DOM.
+2. Implementar os botões de quantidade, mantendo limites mínimo e máximo.
+3. Criar a sacola da Store respeitando produto e tamanho; depois separar Wine.
+4. Calcular subtotal, frete e desconto em centavos antes de formatar em reais.
+5. Aplicar cupons de 10%: `LEDUSTORE10` e `LEDUWINE10`, cada um na sua marca.
+6. Adicionar e remover itens e, depois, aprender persistência com `localStorage`.
+7. Implementar eventos e validação no agendamento, atualizar o resumo e só
+   habilitar o envio após validar. Pizzas continua sem carrinho.
+8. Criar `shared/auth.js` para o mock. Nunca salvar senhas em `localStorage`.
+   Na etapa futura de integração, usar Firebase Auth e Firestore e marcar os
+   pontos de conexão com comentários `// TODO Firebase:`.
 
-- Store: escolha um produto, informe o tamanho e adicione à sacola. O ícone de
-  compra na coleção leva ao detalhe para escolher tamanho; não presume tamanho M.
-- Wine: adicione pela coleção ou pelo detalhe. As sacolas são independentes.
-- Sacolas: alterar quantidade, remover, recarregar e aplicar `LEDUSTORE10` ou
-  `LEDUWINE10`. Desconto de 10% sobre os produtos e frete mock fixo de R$ 5,00
-  por sacola não vazia. A finalização apenas informa o resultado da simulação;
-  não cria um pedido real, não cobra e mantém os itens para continuar os testes.
-- Login: qualquer e-mail válido e senha de pelo menos 6 caracteres inicia uma
-  sessão mock compartilhada. A senha nunca é armazenada. Não é autenticação real.
-- Pizzas: informe uma data e horário futuros, quantidade de pessoas, endereço e
-  contato. A simulação salva somente data, horário e quantidade no navegador,
-  sem enviar à equipe e sem persistir nome, endereço ou telefone.
+Ao implementar um botão, retire seu `disabled` e conecte seu evento. Para
+habilitar formulários, primeiro implemente o tratamento do envio: não envie
+senhas ou dados de contato por parâmetros de URL. A versão estática não carrega
+arquivos `.js`, não executa eventos inline e não depende de Node.js.
 
-O armazenamento usa chaves `ledu:cart:store`, `ledu:cart:wine`,
-`ledu:coupon:store`, `ledu:coupon:wine`, `ledu:session` e `ledu:agendamentos`.
-Para reiniciar a demonstração, remova essas chaves nas ferramentas do navegador.
-O mock limita quantidades a 99 por item e 200 pessoas por solicitação; esses
-limites de interface precisam ser confirmados com o cliente antes do uso real.
+## Referência visual e pendências
 
-## Referências e decisões
+A referência foi o ZIP `Grupo Ledú.zip`, com dez PDFs exportados do Figma.
+Fotos e logos foram extraídos desses PDFs. Cores, medidas e fontes foram
+reconstruídas visualmente, pois os tokens originais não foram exportados.
+Manrope e Cormorant Garamond são aproximações; suas licenças OFL acompanham os
+arquivos em `shared/assets/fonts/`. O coral da Store e os textos do agendamento
+foram escurecidos para melhorar contraste. Responsividade e estados de foco
+foram adaptados porque só vieram referências de desktop.
 
-A referência visual foi o ZIP `Grupo Ledú.zip`, com dez PDFs de uma página,
-exportados do Figma. Não houve acesso ao MCP ou aos tokens originais.
+Os exemplos mantêm as correções dos dados: Serena por R$ 220,00, quarto vinho
+nomeado Kagor conforme a foto, e desconto calculado corretamente em centavos.
+Serena com cupom e frete resulta em R$ 203,00; Garzón, em R$ 211,10.
 
-- Fotos e logotipos foram extraídos dos PDFs. Os cards institucionais usam
-  fotos com texto HTML sobreposto, para manter conteúdo acessível e editável.
-- Cores, espaços e raios foram reconstruídos visualmente. Cormorant Garamond
-  e Manrope são aproximações locais; as fontes do PDF aparecem como glifos
-  vetorizados e não permitem confirmar os nomes originais. As licenças OFL
-  acompanham as fontes em `shared/assets/fonts/`.
-- O coral da Store foi escurecido, assim como textos muito claros do
-  agendamento, para oferecer contraste. Inputs possuem labels e bordas visíveis;
-  controles podem ser usados pelo teclado e mensagens usam regiões de status.
-- O Vestido Serena usa R$ 220,00 em toda a navegação, conforme o detalhe. A
-  referência da sacola mostrava R$ 489,00 e cor bordô apesar da foto azul.
-- O quarto vinho foi nomeado Kagor, conforme o rótulo da imagem, em vez de
-  “Vestido Serena”. Preços são calculados em centavos: Garzón com cupom e frete
-  resulta em R$ 211,10, corrigindo o arredondamento da referência.
-- Descrições não fornecidas para os outros detalhes são textos mockados
-  genéricos, sem acrescentar características técnicas dos produtos.
-- O formulário de contato foi acrescentado ao agendamento com autorização.
-  A data antiga do PDF não foi fixada: o cliente escolhe uma data futura.
-- O link para Pérgola abaixo dos favoritos permite alcançar o detalhe presente
-  no export, mesmo que esse vinho não esteja entre os quatro cards de favoritos.
-- Responsividade e estados interativos foram adaptados, pois só vieram telas
-  de desktop. Não se trata de reprodução exata dos tokens do Figma.
+Cadastro, recuperação de senha, catálogo com filtros e checkout adicional não
+possuem telas no export e não foram inventados. A integração Firebase, os
+cálculos, a persistência e o envio real ficam para os exercícios e etapas futuras.
 
-## Ausências no export e pendências
+## Verificar os arquivos
 
-Não foram criadas novas telas para cadastro, recuperação de senha, catálogo com
-filtros ou checkout, porque seus layouts não vieram no ZIP. Os controles de
-cadastro e recuperação no login informam a indisponibilidade. “Ver todos” leva
-à seleção já existente, sem simular um catálogo adicional. A referência também
-não fornece URL do Instagram, então não foi inventado um link social.
-
-Integração Firebase Auth/Firestore, envio real de agendamentos, pedidos,
-pagamentos, estoque, regras comerciais e confirmação das fontes originais
-permanecem para etapas futuras. Nenhuma credencial é necessária nesta versão.
-
-## Verificação
-
-Testes de regras com o runner nativo do Node.js (Node 22 ou mais recente):
+Os testes usam somente a biblioteca padrão do Python:
 
 ```sh
-node --test tests/carrinho.test.mjs
+python3 -m unittest discover -s tests -p 'test_*.py'
 ```
 
-Foram exercitados nesta entrega: as dez páginas nas larguras 320, 390, 768,
-1440 e 1920 pixels, carregamento dos assets e fontes locais, links internos,
-seleção obrigatória de tamanho, quantidades, cupons, persistência, remoção,
-sacolas independentes, login/saída e agendamento com dados inválidos e válidos.
-As capturas de desktop foram comparadas visualmente aos PDFs exportados.
-As verificações de navegador usaram Chromium e Playwright disponíveis no
-ambiente de desenvolvimento; eles não são dependências da aplicação.
+Eles conferem a ausência de scripts, a integridade dos links e assets locais,
+a estrutura das páginas e os controles de envio desativados. A adaptação também
+foi verificada via HTTP no navegador com JavaScript desativado, em cinco larguras.
+A abertura direta por `file://` não foi validada porque é bloqueada pela política
+do navegador deste ambiente; o fluxo validado usa o servidor local acima.

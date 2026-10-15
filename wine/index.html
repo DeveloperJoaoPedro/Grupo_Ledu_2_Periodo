@@ -1,36 +1,198 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Vinhos selecionados para boas histórias. Conheça a Ledú Wine em Carmo do Paranaíba.">
-  <title>Ledú Wine · Vinhos para boas histórias</title>
-  <link rel="icon" href="../shared/assets/logo.png">
-  <link rel="stylesheet" href="../shared/base.css">
-  <script type="module" src="../shared/catalogo.js"></script>
-</head>
-<body data-brand="wine">
-  <header class="site-header" data-header></header>
-  <main id="conteudo">
-    <section class="hero hero--wine" aria-labelledby="titulo">
-      <div class="hero__copy">
-        <p class="hero__eyebrow">Ledú Wine</p>
-        <h1 class="hero__title" id="titulo">Vinhos para<br>boas histórias.</h1>
-        <p class="hero__description">Rótulos escolhidos para transformar jantares simples em encontros memoráveis.</p>
-        <a class="button" href="#colecao">Ver coleção</a>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Vinhos selecionados para boas histórias. Conheça a Ledú Wine em Carmo do Paranaíba.">
+    <title>Ledú Wine · Vinhos para boas histórias</title>
+    <link rel="icon" href="../shared/assets/logo.png">
+    <link rel="stylesheet" href="../shared/base.css">
+  </head>
+  <body data-brand="wine">
+    <header class="site-header" data-header="">
+      <!-- Futuro nav.js: compartilhar este cabeçalho após estudar manipulação do DOM. -->
+      <a class="skip-link button" href="#conteudo">Pular para o conteúdo</a>
+      <div class="announcement">Carmo do Paranaíba, Minas Gerais · Uma casa, três experiências</div>
+      <nav class="nav" aria-label="Navegação principal">
+        <a class="nav__logo" href="index.html" aria-label="Ledú Wine — início">
+          <img src="../shared/assets/logo.png" width="48" height="48" alt="">
+          <span>Ledú Wine</span>
+        </a>
+        <ul class="nav__links">
+          <li>
+            <a href="../index.html">Grupo Ledú</a>
+          </li>
+          <li>
+            <a href="../store/index.html">Store</a>
+          </li>
+          <li>
+            <a href="index.html" aria-current="page">Wine</a>
+          </li>
+          <li>
+            <a href="../pizzas/index.html">Pizzas</a>
+          </li>
+        </ul>
+        <div class="nav__actions">
+          <a class="icon-button" data-account="" href="../shared/login.html" aria-label="Entrar na sua conta">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"></circle>
+              <circle cx="12" cy="9" r="3"></circle>
+              <path d="M6 18a6 6 0 0 1 12 0"></path>
+            </svg>
+          </a>
+          <a class="icon-button nav__bag" href="carrinho.html" aria-label="Ver sacola de exemplo">
+            <span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 7h14l1 14H4L5 7Z"></path>
+                <path d="M9 8V5a3 3 0 0 1 6 0v3"></path>
+              </svg>
+            </span>
+          </a>
+        </div>
+      </nav>
+    </header>
+    <main id="conteudo">
+      <section class="hero hero--wine" aria-labelledby="titulo">
+        <div class="hero__copy">
+          <p class="hero__eyebrow">Ledú Wine</p>
+          <h1 class="hero__title" id="titulo">Vinhos para<br>boas histórias.</h1>
+          <p class="hero__description">Rótulos escolhidos para transformar jantares simples em encontros memoráveis.</p>
+          <a class="button" href="#colecao">Ver coleção</a>
+        </div>
+        <img class="hero__image" src="../shared/assets/wine-hero.jpg" alt="Garrafa e taça de vinho tinto com um vinhedo ao fundo" width="1536" height="1024" fetchpriority="high">
+      </section>
+      <section class="section container" id="colecao" aria-labelledby="favoritos">
+        <div class="section__heading">
+          <div>
+            <p class="section__eyebrow">Seleção Ledú</p>
+            <h2 class="section__title" id="favoritos">Favoritos:</h2>
+          </div>
+          <a href="#produtos">Ver todos</a>
+        </div>
+        <div class="product-grid" id="produtos" data-products="">
+          <article class="product-card" data-product="barolo">
+            <a class="product-card__link" href="barolo.html">
+              <img class="product-card__image" src="../shared/assets/barolo.jpg" alt="Garrafa de vinho Barolo ao lado de uma taça" loading="lazy" width="440" height="680" style="object-position: center">
+              <h3 class="product-card__name">Barolo</h3>
+            </a>
+            <div class="product-card__bottom">
+              <p class="product-card__price">R$ 149,00</p>
+              <div class="product-card__actions">
+                <button class="icon-button" type="button" data-add="" aria-label="Adicionar Barolo à sacola" disabled title="Disponível em uma próxima etapa">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="m3 3 2 2 3 11h11l2-8H6"></path>
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="18" cy="21" r="1"></circle>
+                    <path d="M13 2v8m-3-3 3 3 3-3"></path>
+                  </svg>
+                </button>
+                <div class="quantity" role="group" aria-label="Quantidade de Barolo">
+                  <button type="button" data-step="-1" aria-label="Diminuir quantidade de Barolo" disabled title="Disponível em uma próxima etapa">−</button>
+                  <output aria-live="polite">1</output>
+                  <button type="button" data-step="1" aria-label="Aumentar quantidade de Barolo" disabled title="Disponível em uma próxima etapa">+</button>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="product-card" data-product="chianti">
+            <a class="product-card__link" href="chianti.html">
+              <img class="product-card__image" src="../shared/assets/chianti.jpg" alt="Garrafa de Chianti Villa Leoni e taça de vinho tinto" loading="lazy" width="440" height="680" style="object-position: center">
+              <h3 class="product-card__name">Chianti</h3>
+            </a>
+            <div class="product-card__bottom">
+              <p class="product-card__price">R$ 118,00</p>
+              <div class="product-card__actions">
+                <button class="icon-button" type="button" data-add="" aria-label="Adicionar Chianti à sacola" disabled title="Disponível em uma próxima etapa">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="m3 3 2 2 3 11h11l2-8H6"></path>
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="18" cy="21" r="1"></circle>
+                    <path d="M13 2v8m-3-3 3 3 3-3"></path>
+                  </svg>
+                </button>
+                <div class="quantity" role="group" aria-label="Quantidade de Chianti">
+                  <button type="button" data-step="-1" aria-label="Diminuir quantidade de Chianti" disabled title="Disponível em uma próxima etapa">−</button>
+                  <output aria-live="polite">1</output>
+                  <button type="button" data-step="1" aria-label="Aumentar quantidade de Chianti" disabled title="Disponível em uma próxima etapa">+</button>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="product-card" data-product="garzon">
+            <a class="product-card__link" href="garzon.html">
+              <img class="product-card__image" src="../shared/assets/garzon.jpg" alt="Garrafa Garzón Tannat Reserva com o rótulo em destaque" loading="lazy" width="440" height="680" style="object-position: center">
+              <h3 class="product-card__name">Garzon</h3>
+            </a>
+            <div class="product-card__bottom">
+              <p class="product-card__price">R$ 229,00</p>
+              <div class="product-card__actions">
+                <button class="icon-button" type="button" data-add="" aria-label="Adicionar Garzon à sacola" disabled title="Disponível em uma próxima etapa">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="m3 3 2 2 3 11h11l2-8H6"></path>
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="18" cy="21" r="1"></circle>
+                    <path d="M13 2v8m-3-3 3 3 3-3"></path>
+                  </svg>
+                </button>
+                <div class="quantity" role="group" aria-label="Quantidade de Garzon">
+                  <button type="button" data-step="-1" aria-label="Diminuir quantidade de Garzon" disabled title="Disponível em uma próxima etapa">−</button>
+                  <output aria-live="polite">1</output>
+                  <button type="button" data-step="1" aria-label="Aumentar quantidade de Garzon" disabled title="Disponível em uma próxima etapa">+</button>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="product-card" data-product="kagor">
+            <a class="product-card__link" href="kagor.html">
+              <img class="product-card__image" src="../shared/assets/kagor.jpg" alt="Duas garrafas de vinho Kagor sobre fundo escuro" loading="lazy" width="440" height="680" style="object-position: center">
+              <h3 class="product-card__name">Kagor</h3>
+            </a>
+            <div class="product-card__bottom">
+              <p class="product-card__price">R$ 96,00</p>
+              <div class="product-card__actions">
+                <button class="icon-button" type="button" data-add="" aria-label="Adicionar Kagor à sacola" disabled title="Disponível em uma próxima etapa">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="m3 3 2 2 3 11h11l2-8H6"></path>
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="18" cy="21" r="1"></circle>
+                    <path d="M13 2v8m-3-3 3 3 3-3"></path>
+                  </svg>
+                </button>
+                <div class="quantity" role="group" aria-label="Quantidade de Kagor">
+                  <button type="button" data-step="-1" aria-label="Diminuir quantidade de Kagor" disabled title="Disponível em uma próxima etapa">−</button>
+                  <output aria-live="polite">1</output>
+                  <button type="button" data-step="1" aria-label="Aumentar quantidade de Kagor" disabled title="Disponível em uma próxima etapa">+</button>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+        <p class="notice wine-extra">Conheça também o <a href="produto.html">Vinho Tinto Pérgola Suave</a>.</p>
+      </section>
+    </main>
+    <footer class="site-footer" data-footer="">
+      <!-- Rodapé escrito no HTML para funcionar sem JavaScript. -->
+      <div class="container footer">
+        <div class="footer__identity">
+          <img src="../shared/assets/logo-claro.png" width="48" height="48" alt="">
+          <div>
+            <p class="footer__title">Grupo Ledú</p>
+            <p class="footer__description">Moda, vinhos e sabores reunidos por uma mesma forma de receber.</p>
+          </div>
+        </div>
+        <div>
+          <h2 class="footer__heading">Nossas marcas</h2>
+          <div class="footer__links">
+            <a href="../store/index.html">Ledú Store</a>
+            <a href="index.html">Ledú Wine</a>
+            <a href="../pizzas/index.html">Ledú Pizzas</a>
+          </div>
+        </div>
+        <div>
+          <h2 class="footer__heading">Visite-nos</h2>
+          <address>Rua Costa Junior, 440 – Centro<br>Carmo do Paranaíba – MG<br>CEP: 38840-024<br>Brasil</address>
+        </div>
       </div>
-      <img class="hero__image" src="../shared/assets/wine-hero.jpg" alt="Garrafa e taça de vinho tinto com um vinhedo ao fundo" width="1536" height="1024" fetchpriority="high">
-    </section>
-    <section class="section container" id="colecao" aria-labelledby="favoritos">
-      <div class="section__heading">
-        <div><p class="section__eyebrow">Seleção Ledú</p><h2 class="section__title" id="favoritos">Favoritos:</h2></div>
-        <a href="#produtos">Ver todos</a>
-      </div>
-      <div class="product-grid" id="produtos" data-products></div>
-      <p class="notice wine-extra">Conheça também o <a href="produto.html?id=pergola">Vinho Tinto Pérgola Suave</a>.</p>
-    </section>
-  </main>
-  <footer class="site-footer" data-footer></footer>
-  <noscript><p class="container">Ative o JavaScript para consultar os vinhos e usar a sacola.</p></noscript>
-</body>
+    </footer>
+  </body>
 </html>
