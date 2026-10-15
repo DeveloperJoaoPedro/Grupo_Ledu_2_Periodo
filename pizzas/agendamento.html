@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agende seu rodízio | Ledú Pizzas</title>
+  <link rel="icon" href="../shared/assets/logo.png">
+  <link rel="stylesheet" href="../shared/base.css">
+  <script type="module" src="agendamento.js"></script>
+</head>
+<body data-brand="pizzas">
+  <header class="site-header" data-header></header>
+  <main class="booking" id="conteudo">
+    <div class="booking__intro">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 2v6m10-6v6M3 11h18"/></svg>
+      <h1>Agende seu rodízio</h1>
+      <p>Escolha os detalhes da experiência para reunir todo mundo à mesa.</p>
+    </div>
+    <form class="container booking__layout" data-booking-form>
+      <div class="booking__fields">
+        <fieldset>
+          <legend>1. Quando será?</legend>
+          <div class="field-row">
+            <div class="field"><label for="data">Data</label><input id="data" name="data" type="date" required></div>
+            <div class="field"><label for="horario">Horário</label><input id="horario" name="horario" type="time" required></div>
+          </div>
+        </fieldset>
+        <fieldset><legend>2. Para quantas pessoas?</legend><div data-people-control></div></fieldset>
+        <fieldset>
+          <legend>3. Onde vamos servir?</legend>
+          <div class="field-row">
+            <div class="field"><label for="endereco">Endereço</label><input id="endereco" name="endereco" placeholder="Rua, número e bairro" autocomplete="street-address" minlength="5" maxlength="180" required></div>
+            <div class="field"><label for="complemento">Complemento (opcional)</label><input id="complemento" name="complemento" placeholder="Casa, apto…" maxlength="80"></div>
+          </div>
+        </fieldset>
+        <!-- Contato foi autorizado para permitir o retorno sobre o agendamento. -->
+        <fieldset>
+          <legend>4. Como podemos falar com você?</legend>
+          <div class="field-row">
+            <div class="field"><label for="nome">Nome</label><input id="nome" name="nome" autocomplete="name" minlength="2" maxlength="80" required></div>
+            <div class="field"><label for="telefone">Telefone com DDD</label><input id="telefone" name="telefone" type="tel" autocomplete="tel" placeholder="(34) 99999-9999" maxlength="22" required></div>
+          </div>
+        </fieldset>
+      </div>
+      <aside class="summary booking__summary" aria-labelledby="resumo">
+        <p class="section__eyebrow">Resumo do agendamento</p>
+        <h2 id="resumo">Rodízio em casa</h2>
+        <ul data-booking-summary aria-live="polite" aria-atomic="true"></ul>
+        <p class="notice">O agendamento depende da confirmação de disponibilidade e dos detalhes com a equipe.</p>
+        <button class="button button--full" type="submit">Solicitar agendamento</button>
+        <p class="status" data-booking-status role="status"></p>
+      </aside>
+    </form>
+  </main>
+  <footer class="site-footer" data-footer></footer>
+  <noscript><p class="container">Ative o JavaScript para preencher o agendamento.</p></noscript>
+</body>
+</html>

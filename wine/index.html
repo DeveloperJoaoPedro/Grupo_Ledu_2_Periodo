@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Vinhos selecionados para boas histórias. Conheça a Ledú Wine em Carmo do Paranaíba.">
+  <title>Ledú Wine · Vinhos para boas histórias</title>
+  <link rel="icon" href="../shared/assets/logo.png">
+  <link rel="stylesheet" href="../shared/base.css">
+  <script type="module" src="../shared/catalogo.js"></script>
+</head>
+<body data-brand="wine">
+  <header class="site-header" data-header></header>
+  <main id="conteudo">
+    <section class="hero hero--wine" aria-labelledby="titulo">
+      <div class="hero__copy">
+        <p class="hero__eyebrow">Ledú Wine</p>
+        <h1 class="hero__title" id="titulo">Vinhos para<br>boas histórias.</h1>
+        <p class="hero__description">Rótulos escolhidos para transformar jantares simples em encontros memoráveis.</p>
+        <a class="button" href="#colecao">Ver coleção</a>
+      </div>
+      <img class="hero__image" src="../shared/assets/wine-hero.jpg" alt="Garrafa e taça de vinho tinto com um vinhedo ao fundo" width="1536" height="1024" fetchpriority="high">
+    </section>
+    <section class="section container" id="colecao" aria-labelledby="favoritos">
+      <div class="section__heading">
+        <div><p class="section__eyebrow">Seleção Ledú</p><h2 class="section__title" id="favoritos">Favoritos:</h2></div>
+        <a href="#produtos">Ver todos</a>
+      </div>
+      <div class="product-grid" id="produtos" data-products></div>
+      <p class="notice wine-extra">Conheça também o <a href="produto.html?id=pergola">Vinho Tinto Pérgola Suave</a>.</p>
+    </section>
+  </main>
+  <footer class="site-footer" data-footer></footer>
+  <noscript><p class="container">Ative o JavaScript para consultar os vinhos e usar a sacola.</p></noscript>
+</body>
+</html>

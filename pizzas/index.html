@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Agende seu rodízio de pizzas artesanais com a Ledú Pizzas em Carmo do Paranaíba.">
+  <title>Ledú Pizzas · O rodízio chega até você</title>
+  <link rel="icon" href="../shared/assets/logo.png">
+  <link rel="stylesheet" href="../shared/base.css">
+  <script type="module" src="sabores.js"></script>
+</head>
+<body data-brand="pizzas">
+  <header class="site-header" data-header></header>
+  <main id="conteudo">
+    <section class="hero hero--pizzas" aria-labelledby="titulo">
+      <div class="hero__copy">
+        <p class="hero__eyebrow">Ledú Pizzas</p>
+        <h1 class="hero__title" id="titulo">O rodízio<br>chega até você.</h1>
+        <p class="hero__description">Pizzas artesanais preparadas para reunir todo mundo em volta da mesa.</p>
+        <a class="button" href="agendamento.html">Agendar seu rodízio</a>
+      </div>
+      <img class="hero__image" src="../shared/assets/pizzas-hero.jpg" alt="Pizza artesanal de pepperoni e queijo com uma fatia sendo servida" width="612" height="408" fetchpriority="high">
+    </section>
+    <section class="section container" id="sabores" aria-labelledby="rodada">
+      <div class="section__heading">
+        <div><p class="section__eyebrow">Seleção Ledú</p><h2 class="section__title" id="rodada">Sabores da rodada</h2></div>
+        <a href="#lista-sabores">Ver todos</a>
+      </div>
+      <div class="product-grid" id="lista-sabores" data-flavors></div>
+    </section>
+  </main>
+  <footer class="site-footer" data-footer></footer>
+  <noscript><p class="container">Ative o JavaScript para consultar os sabores.</p></noscript>
+</body>
+</html>
