@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Conheça a seleção de moda feminina da Ledú Store, em Carmo do Paranaíba.">
+  <title>Ledú Store · Peças que acompanham sua história</title>
+  <link rel="icon" href="../shared/assets/logo.png">
+  <link rel="stylesheet" href="../shared/base.css">
+  <script type="module" src="../shared/catalogo.js"></script>
+</head>
+<body data-brand="store">
+  <header class="site-header" data-header></header>
+  <main id="conteudo">
+    <section class="hero hero--store" aria-labelledby="titulo">
+      <div class="hero__copy">
+        <p class="hero__eyebrow">Ledú Store</p>
+        <h1 class="hero__title" id="titulo">Peças que acompanham a sua história</h1>
+        <p class="hero__description">Uma curadoria feminina atemporal, feita para vestir com presença e naturalidade.</p>
+        <a class="button" href="#colecao">Ver coleção</a>
+      </div>
+      <img class="hero__image" src="../shared/assets/store-hero.jpg" alt="Modelo com blazer e calça bordô, acompanhados de camisa clara" width="1536" height="1024" fetchpriority="high">
+    </section>
+    <section class="section container" id="colecao" aria-labelledby="novidades">
+      <div class="section__heading">
+        <div><p class="section__eyebrow">Seleção Ledú</p><h2 class="section__title" id="novidades">Novidades:</h2></div>
+        <a href="#produtos">Ver todos</a>
+      </div>
+      <div class="product-grid" id="produtos" data-products></div>
+    </section>
+  </main>
+  <footer class="site-footer" data-footer></footer>
+  <noscript><p class="container">Ative o JavaScript para consultar os produtos e usar a sacola.</p></noscript>
+</body>
+</html>

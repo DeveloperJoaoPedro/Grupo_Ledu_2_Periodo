@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sua sacola | Ledú Store</title>
+  <link rel="icon" href="../shared/assets/logo.png">
+  <link rel="stylesheet" href="../shared/base.css">
+  <script type="module" src="../shared/sacola.js"></script>
+</head>
+<body data-brand="store">
+  <header class="site-header" data-header></header>
+  <main class="container cart" id="conteudo">
+    <div class="cart__intro"><h1>Sua Sacola</h1><p>Revise seus itens antes de finalizar.</p></div>
+    <div class="cart__layout">
+      <section class="cart__items" aria-label="Itens da sacola" data-cart-items></section>
+      <aside class="summary" aria-labelledby="resumo" data-summary hidden>
+        <h2 class="summary__title" id="resumo">Resumo</h2>
+        <dl>
+          <div class="summary__line"><dt>Subtotal</dt><dd data-subtotal></dd></div>
+          <div class="summary__line"><dt>Frete</dt><dd data-shipping></dd></div>
+          <div class="summary__line"><dt>Desconto</dt><dd data-discount></dd></div>
+        </dl>
+        <form class="coupon" data-coupon-form>
+          <label for="cupom">Cupom de desconto</label>
+          <div class="coupon__row"><input id="cupom" name="cupom" placeholder="LEDUSTORE10" maxlength="30" autocapitalize="characters" aria-describedby="cupom-status"><button class="button" type="submit">Aplicar</button></div>
+          <p class="status" id="cupom-status" role="status" data-coupon-status></p>
+        </form>
+        <dl><div class="summary__line summary__total"><dt>Total</dt><dd data-total></dd></div></dl>
+        <button class="button button--full" type="button" data-checkout>Finalizar Compra</button>
+        <a class="summary__continue" href="index.html#colecao">Continuar Compra</a>
+        <p class="status" role="status" data-checkout-status></p>
+      </aside>
+    </div>
+  </main>
+  <footer class="site-footer" data-footer></footer>
+  <noscript><p class="container">Ative o JavaScript para usar a sacola.</p></noscript>
+</body>
+</html>

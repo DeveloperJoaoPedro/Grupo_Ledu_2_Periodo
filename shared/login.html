@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sua conta | Grupo Ledú</title>
+  <link rel="icon" href="assets/logo.png">
+  <link rel="stylesheet" href="base.css">
+  <script type="module" src="login.js"></script>
+</head>
+<body>
+  <header class="site-header" data-header></header>
+  <main class="login" id="conteudo">
+    <div class="login__visual">
+      <img src="assets/login.jpg" alt="Taça de vinho e pizza em uma composição com tecido bordô" width="1854" height="2180" fetchpriority="high">
+      <blockquote class="login__quote">“Tudo que você gosta, reunido em uma só conta.”</blockquote>
+    </div>
+    <section class="login__content" aria-labelledby="boas-vindas">
+      <h1 id="boas-vindas">Boas-vindas</h1>
+      <p class="login__description">Acesse Store, Wine, Pizzas com a mesma conta.</p>
+      <div class="login__tabs" role="group" aria-label="Opções de acesso">
+        <button class="login__tab" type="button" aria-pressed="true">Entrar</button>
+        <button class="login__tab" type="button" data-sign-up>Criar conta</button>
+      </div>
+      <form class="login__form" data-login-form>
+        <div class="field"><label for="email">E-mail</label><input id="email" name="email" type="email" autocomplete="email" placeholder="voce@exemplo.com" maxlength="254" required></div>
+        <div class="field"><label for="senha">Senha</label><input id="senha" name="senha" type="password" autocomplete="current-password" placeholder="sua senha" minlength="6" maxlength="128" required></div>
+        <button class="button button--full" type="submit">Entrar</button>
+        <button class="text-button" type="button" data-recover>Esqueci minha senha</button>
+      </form>
+      <p class="status" role="status" data-login-status></p>
+      <div class="login__session" data-session hidden>
+        <p>Você está conectado como <strong data-email></strong>.</p>
+        <a class="button" href="../index.html">Continuar no Grupo Ledú</a>
+        <button class="text-button" type="button" data-sign-out>Sair da conta</button>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer" data-footer></footer>
+  <noscript><p class="container">Ative o JavaScript para acessar sua conta.</p></noscript>
+</body>
+</html>
