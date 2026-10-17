@@ -1,0 +1,72 @@
+@font-face {
+    font-family: "fonte_titulos";
+    src: url(/fotos/fonts/cormorantgaramond.ttf) format("truetype");
+}
+@font-face {
+    font-family: "fonte_texto";
+    src: url(/fotos/fonts/manrope.ttf) format("truetype");
+}
+body {
+    background-color: #f8f3ed;
+    margin: 0;
+}
+h1 {
+    font-family:"fonte_texto", sans-serif ;
+    font-size: 20px;
+    color: #39101E;
+}
+#cabecalho{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: auto;
+    height: 25px;
+    color: rgba(255, 255, 255, 0.76);
+    background-color: #39101E;
+    font-family: "fonte_texto", sans-serif;
+    font-size: 12px ;
+    text-align: center;
+}
+.barra_navegacao{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: auto;
+    align-items: center;
+    background-color: #FBF8F1;
+    padding: 10px 30px;
+}
+.links a {
+    text-decoration: none;
+    color: #39101E;
+}
+.links{
+    font-family: "fonte_texto", sans-serif;
+    font-size: 15px ;
+    text-align: center;
+    display: flex;
+    gap: 90px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.icones{
+    display: flex;
+    align-items: center;
+    transform: translateX(-200%);
+    gap: 30px;
+}
+.logo img{
+    width: 300px;
+}
+.secao1 img{
+    height: 681px;
+    transform: translateX(00%);
+}
+.secao1{
+    margin-left: 50px;
+    display: flex;
+    background-color: #F9E8E9;
+    width: auto;
+    height: 681px;
+}
