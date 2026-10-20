@@ -61,18 +61,17 @@ h1 {
     width: 300px;
 }
 .secao1{
-    position: absolute;
-    margin-left: 0px;
+    width: 100%;
     display: flex;
-  
     background-color: #F9E8E9;
     height: 681px;
 }
 #vinho_padrao{
+    display: flex;
     height: 681px;
 }
 #titulo_ledu_wine{
-    width: 30%;
+    width: 100%;
     font-family: "manrope", sans-serif;
     font-weight: 400;
     font-size: 30px;
@@ -80,18 +79,19 @@ h1 {
     margin:100px 70px 0px;
 }
 #frase_ledu_wine{
-    width: 70%;
+    width: 100%;
     font-family: "cormorantgaramond", sans-serif;
     font-size: 100px;
     color: #39101E;
     margin: 10px 70px 0px;
 }
 #paragrafo_ledu{
-    width: 50%;
+    width: 100%;
     font-family: "manrope", sans-serif;
     font-size: 20px;
     color: #39101E;
-    margin: 10px 70px 20px;
+    margin: 10px 70px 40px;
+    margin-right: 630px
 }
 .botao_ver_colecao{
     background-color: #39101E;
@@ -104,9 +104,8 @@ h1 {
     text-decoration: none;
 }
 .secao2{
-    position: absolute;
+    margin-top: 5%;
     width: 100%;
-    margin-top: 720px;
 }
 #selecao_ledu{
     font-family: "manrope", sans-serif;
@@ -135,15 +134,88 @@ h1 {
     color: #39101E;
     margin-left: auto;
 }
-.secao_roupas{
+.secao_vinho{
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: calc(100%-140px);
     margin: 10px 70px 70px;
 }
-.imagem_roupas{
+.imagem_vinho{
     border-radius: 15px;
-    width: 364px;
+    width: 400px;
     height: 650px;
+}
+.info_produto{
+    display: flex;
+    flex-direction: column;
+    width: fit-content
+}
+.info_produto a {
+    text-decoration: none;
+}
+.info_produto h2{
+    color: #39101E;
+    font-size: 40px;
+    font-family: "cormorantgaramond", sans-serif;
+    margin-top: 5%;
+    margin-bottom: 0;
+}
+.info_produto p {
+    font-size: 20px;
+    font-family: "manrope", sans-serif;
+    margin-top: 0;
+}
+.adicionar_carrinho{
+    cursor: pointer;
+    border: none;
+}
+.quantitade{
+    background-color: #f8f3ed;
+    cursor: pointer;
+    border: none;
+    font-size: 20px;
+}
+.card_carrinho{
+    background-color: #f8f3ed;
+    display: flex;
+    justify-content: right;
+    margin-top: -18%;
+}
+.card_quantidade{
+    display: flex;
+    border: 1px solid black;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    border-radius: 5px;
+}
+.rodape{
+    display: flex;
+    background-color: #39101E;
+    border: 1px solid black;
+    display: flex;
+    height: 201px;
+    align-items: center;
+    padding: 0px 70px 0px;
+    flex-direction: row;
+}
+.marca_rodape{
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+    justify-content: center;
+}
+.marca_rodape h2{
+    color: white;
+    font-family: "cormorantgaramond", sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+    margin: 0;
+}
+.marca_rodape p{
+    color: white;
+    font-family: "manrope", san;
+    font-size: 15px;
+    font-weight: 400;
 }
