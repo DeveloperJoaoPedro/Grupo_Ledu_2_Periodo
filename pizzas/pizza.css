@@ -1,0 +1,159 @@
+/* Somente a página inicial de Pizzas. Referência Figma: 96:567. */
+.hero {
+  display: grid;
+  grid-template-columns: 46.82% 53.18%;
+  max-width: var(--page-width);
+  margin-inline: auto;
+  background: var(--surface-pizzas);
+}
+
+.hero__copy {
+  padding: clamp(3rem, 7.95vw, 9.5rem) 2rem clamp(3rem, 6.25vw, 7.5rem) clamp(1.5rem, 4.48vw, 5.375rem);
+  color: var(--accent);
+}
+
+.hero__eyebrow {
+  font-size: clamp(1rem, 1.25vw, 1.5rem);
+  margin-bottom: 20px;
+}
+
+.hero__title {
+  max-width: 620px;
+  font-size: clamp(3rem, 5.21vw, 6.25rem);
+  line-height: .9;
+}
+
+.hero__description {
+  max-width: 461px;
+  font-size: clamp(1rem, 1.3vw, 1.5625rem);
+  line-height: 1.4;
+  color: #944317b3;
+  margin-block: 30px 26px;
+}
+
+.hero .button {
+  min-height: 48px;
+  font-size: clamp(1rem, 1.3vw, 1.5625rem);
+  padding: 4px 32px;
+}
+
+.hero__media {
+  position: relative;
+  overflow: hidden;
+  min-height: 100%;
+}
+
+.hero__image {
+  position: absolute;
+  width: 100%;
+  max-width: none;
+  height: 101.83%;
+  top: -1.76%;
+  object-fit: cover;
+}
+
+.section {
+  padding-top: clamp(3rem, 4.95vw, 5.94rem);
+  padding-bottom: clamp(3rem, 7.3vw, 8.75rem);
+}
+
+.section__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: clamp(2rem, 4vw, 5rem);
+}
+
+.section__eyebrow {
+  color: var(--accent);
+  font-size: clamp(1rem, 1.25vw, 1.5rem);
+}
+
+.section__title {
+  font-size: clamp(2rem, 3.33vw, 4rem);
+  font-weight: 400;
+  color: #000;
+}
+
+.section__heading>a {
+  color: var(--accent);
+  font-size: clamp(1rem, 1.25vw, 1.5rem);
+  flex-shrink: 0;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1rem, 1.875vw, 2.25rem);
+}
+
+.product-card__media {
+  position: relative;
+  overflow: hidden;
+  border-radius: 30px;
+  aspect-ratio: 438 / 681;
+}
+
+.product-card__image {
+  position: absolute;
+  max-width: none;
+}
+
+.product-card:nth-child(1) img {
+  width: 236.49%;
+  height: 100.06%;
+  left: -56.42%;
+  top: -.11%;
+}
+
+.product-card:nth-child(2) img {
+  width: 120.54%;
+  height: 125.46%;
+  left: -2.85%;
+  top: -15.97%;
+}
+
+.product-card:nth-child(3) img {
+  width: 133.83%;
+  height: 108.91%;
+  left: -8.22%;
+  top: -.04%;
+}
+
+.product-card:nth-child(4) img {
+  width: 109.7%;
+  height: 102.13%;
+  left: -.02%;
+  top: 0;
+}
+
+.product-card__name {
+  margin-top: 14px;
+  color: var(--accent);
+  font-size: clamp(1.5rem, 1.67vw, 2rem);
+  font-weight: 600;
+}
+
+@media (max-width: 800px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero__copy {
+    padding: 3rem 1.5rem;
+  }
+
+  .hero__media {
+    min-height: 0;
+    aspect-ratio: 1021 / 681;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .product-card__media {
+    border-radius: 20px;
+  }
+}

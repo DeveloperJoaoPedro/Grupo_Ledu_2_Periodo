@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Agende seu rodízio de pizzas artesanais com a Ledú Pizzas em Carmo do Paranaíba.">
+  <title>Ledú Pizzas · O rodízio chega até você</title>
+  <link rel="icon" href="../imagens_fonts/assets/logo-figma.png" type="image/png">
+  <link rel="stylesheet" href="../global.css">
+  <link rel="stylesheet" href="pizza.css">
+</head>
+
+<body data-brand="pizzas">
+  <header class="site-header">
+    <a class="skip-link button" href="#conteudo">Pular para o conteúdo</a>
+    <div class="announcement">Carmo do Paranaíba, Minas Gerais · Uma casa, três experiências</div>
+    <nav class="nav" aria-label="Navegação principal">
+      <a class="nav__logo" href="index.html" aria-label="Ledú Pizzas — início">
+        <img src="../imagens_fonts/assets/logo-figma.png" width="48" height="48" alt="">
+        <span>Ledú Pizzas</span>
+      </a>
+      <ul class="nav__links">
+        <li>
+          <a href="../index.html">Grupo Ledú</a>
+        </li>
+        <li>
+          <a href="../store/index.html">Store</a>
+        </li>
+        <li>
+          <a href="../wine/index.html">Wine</a>
+        </li>
+        <li>
+          <a href="../pizzas/pizza.html" aria-current="page">Pizzas</a>
+        </li>
+      </ul>
+      <div class="nav__actions">
+        <a class="icon-button" data-account="" href="../shared/login.html" aria-label="Entrar na sua conta">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="9"></circle>
+            <circle cx="12" cy="9" r="3"></circle>
+            <path d="M6 18a6 6 0 0 1 12 0"></path>
+          </svg>
+        </a>
+      </div>
+    </nav>
+  </header>
+  <main id="conteudo">
+    <section class="hero hero--pizzas" aria-labelledby="titulo">
+      <div class="hero__copy">
+        <p class="hero__eyebrow">Ledú Pizzas</p>
+        <h1 class="hero__title" id="titulo">O rodízio<br>chega até você.</h1>
+        <p class="hero__description">Pizzas artesanais preparadas para reunir todo mundo em volta da mesa.</p>
+        <a class="button" href="agendamento.html">Agendar seu rodízio</a>
+      </div>
+      <div class="hero__media"><img class="hero__image" src="../imagens_fonts/assets/pizza-hero-figma.png"
+          alt="Pizza artesanal de pepperoni e queijo com uma fatia sendo servida" width="612" height="408"
+          fetchpriority="high"></div>
+    </section>
+    <section class="section container" id="sabores" aria-labelledby="rodada">
+      <div class="section__heading">
+        <div>
+          <p class="section__eyebrow">Seleção Ledú</p>
+          <h2 class="section__title" id="rodada">Sabores da rodada</h2>
+        </div>
+        <a href="#lista-sabores">Ver todos</a>
+      </div>
+      <div class="product-grid" id="lista-sabores" data-flavors="">
+        <article class="product-card">
+          <div class="product-card__media"><img class="product-card__image"
+              src="../imagens_fonts/assets/marguerita-figma.png"
+              alt="Pizzas de marguerita com queijo, tomate e manjericão à mesa" loading="lazy" width="440" height="680">
+          </div>
+          <h3 class="product-card__name">Marguerita</h3>
+        </article>
+        <article class="product-card">
+          <div class="product-card__media"><img class="product-card__image"
+              src="../imagens_fonts/assets/a-moda-figma.png" alt="Pizza à moda com diferentes coberturas" loading="lazy"
+              width="440" height="680"></div>
+          <h3 class="product-card__name">À Moda</h3>
+        </article>
+        <article class="product-card">
+          <div class="product-card__media"><img class="product-card__image"
+              src="../imagens_fonts/assets/frango-figma.png" alt="Pizza de frango com queijo" loading="lazy" width="440"
+              height="680"></div>
+          <h3 class="product-card__name">Frango</h3>
+        </article>
+        <article class="product-card">
+          <div class="product-card__media"><img class="product-card__image"
+              src="../imagens_fonts/assets/chocolate-figma.png" alt="Pizza doce com cobertura e raspas de chocolate"
+              loading="lazy" width="440" height="680"></div>
+          <h3 class="product-card__name">Chocolate</h3>
+        </article>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer" data-footer="">
+    <div class="container footer">
+      <div class="footer__identity">
+        <div class="footer__logo">
+          <img src="../imagens_fonts/assets/logo-claro-figma.png" width="62" height="62" alt="">
+          <img class="footer__social" src="../imagens_fonts/assets/instagram-figma.svg" width="24" height="24"
+            alt="Instagram">
+        </div>
+        <div>
+          <p class="footer__title">Grupo Ledú</p>
+          <p class="footer__description">Moda, vinhos e sabores reunidos por uma mesma forma de receber.</p>
+        </div>
+      </div>
+      <div>
+        <h2 class="footer__heading">Nossas marcas</h2>
+        <div class="footer__links">
+          <a href="../store/index.html">Ledú Store</a>
+          <a href="../wine/index.html">Ledú Wine</a>
+          <a href="index.html">Ledú Pizzas</a>
+        </div>
+      </div>
+      <div>
+        <h2 class="footer__heading">Visite-nos</h2>
+        <address>Rua Costa Junior, 440 – Centro<br>Carmo do Paranaíba – MG<br>CEP: 38840-024<br>Brasil</address>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
