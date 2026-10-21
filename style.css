@@ -193,7 +193,6 @@ h1 {
 .rodape{
     display: flex;
     background-color: #39101E;
-    border: 1px solid black;
     display: flex;
     height: 201px;
     align-items: center;
@@ -218,4 +217,51 @@ h1 {
     font-family: "manrope", san;
     font-size: 15px;
     font-weight: 400;
+}
+.info_rodape{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 35%;
+    gap: 15%;
+}
+#nossa_marca{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+}
+#nossa_marca h3{
+    font-family: "cormorantgaramond", sans-serif;
+    font-size: 28px;
+    color: white;
+    margin-top: 0;
+}
+#nossa_marca a {
+    font-family: "manrope", sans-serif;
+    font-size: 18px;
+    text-decoration: none;
+    color: white;
+    margin-bottom: 10%;
+    width: fit-content;
+}
+#visite-nos{
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    width: 400px;
+
+}
+#visite-nos h3{
+    font-family: "cormorantgaramond", sans-serif;
+    font-size: 28px;
+    color: white;
+    margin: 0;
+}
+#visite-nos p{
+    font-weight: 250;
+    font-family: "manrope", sans-serif;
+    font-size: 18px;
+    color: white;
+    letter-spacing: 1px;
+    margin: 0;
 }
