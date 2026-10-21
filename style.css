@@ -1,0 +1,267 @@
+@font-face {
+    font-family: "cormorantgaramond";
+    src: url(/assets/fonts/cormorantgaramond.ttf) format("truetype");
+}
+@font-face {
+    font-family: "manrope";
+    src: url(/assets/fonts/manrope.ttf) format("truetype");
+}
+body {
+    background-color: #f8f3ed;
+    margin: 0;
+}
+h1 {
+    font-family:"manrope", sans-serif ;
+    font-size: 20px;
+    color: #39101E;
+}
+#cabecalho{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: auto;
+    height: 25px;
+    color: rgba(255, 255, 255, 0.76);
+    background-color: #39101E;
+    font-family: "manrope", sans-serif;
+    font-size: 12px ;
+    text-align: center;
+}
+.barra_navegacao{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: auto;
+    align-items: center;
+    background-color: #FBF8F1;
+    padding: 10px 30px;
+    border-bottom: 1px solid #000000;
+}
+.links a {
+    text-decoration: none;
+    color: #39101E;
+}
+.links{
+    font-family: "manrope", sans-serif;
+    font-size: 15px ;
+    text-align: center;
+    display: flex;
+    gap: 90px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.icones{
+    display: flex;
+    align-items: center;
+    transform: translateX(-200%);
+    gap: 30px;
+}
+.logo img{
+    width: 300px;
+}
+.secao1{
+    width: 100%;
+    display: flex;
+    background-color: #F9E8E9;
+    height: 681px;
+}
+#vinho_padrao{
+    display: flex;
+    height: 681px;
+}
+#titulo_ledu_wine{
+    width: 100%;
+    font-family: "manrope", sans-serif;
+    font-weight: 400;
+    font-size: 30px;
+    color: #39101E;
+    margin:100px 70px 0px;
+}
+#frase_ledu_wine{
+    width: 100%;
+    font-family: "cormorantgaramond", sans-serif;
+    font-size: 100px;
+    color: #39101E;
+    margin: 10px 70px 0px;
+}
+#paragrafo_ledu{
+    width: 100%;
+    font-family: "manrope", sans-serif;
+    font-size: 20px;
+    color: #39101E;
+    margin: 10px 70px 40px;
+    margin-right: 630px
+}
+.botao_ver_colecao{
+    background-color: #39101E;
+    color: #F9E8E9;
+    font-family: "manrope", sans-serif;
+    font-size: 15px;
+    margin: 10px 70px 0px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+.secao2{
+    margin-top: 5%;
+    width: 100%;
+}
+#selecao_ledu{
+    font-family: "manrope", sans-serif;
+    font-weight: 450;
+    font-size: 20px;
+    color: #39101E;
+    margin: 20px 70px 0px;
+}
+.colecao {
+    display: flex;
+    align-items: center;
+    margin: 20px 70px 0;
+}
+#favoritos{
+    font-family: "cormorantgaramond", sans-serif;
+    font-weight: 400;
+    font-size: 50px;
+    color: #39101E;
+    gap: 20px;
+    margin: 0;
+}
+#ver_todos{
+    font-family: "manrope", sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    color: #39101E;
+    margin-left: auto;
+}
+.secao_vinho{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: calc(100%-140px);
+    margin: 10px 70px 70px;
+}
+.imagem_vinho{
+    border-radius: 15px;
+    width: 400px;
+    height: 650px;
+}
+.info_produto{
+    display: flex;
+    flex-direction: column;
+    width: fit-content
+}
+.info_produto a {
+    text-decoration: none;
+}
+.info_produto h2{
+    color: #39101E;
+    font-size: 40px;
+    font-family: "cormorantgaramond", sans-serif;
+    margin-top: 5%;
+    margin-bottom: 0;
+}
+.info_produto p {
+    font-size: 20px;
+    font-family: "manrope", sans-serif;
+    margin-top: 0;
+}
+.adicionar_carrinho{
+    cursor: pointer;
+    border: none;
+}
+.quantitade{
+    background-color: #f8f3ed;
+    cursor: pointer;
+    border: none;
+    font-size: 20px;
+}
+.card_carrinho{
+    background-color: #f8f3ed;
+    display: flex;
+    justify-content: right;
+    margin-top: -18%;
+}
+.card_quantidade{
+    display: flex;
+    border: 1px solid black;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    border-radius: 5px;
+}
+.rodape{
+    display: flex;
+    background-color: #39101E;
+    display: flex;
+    height: 201px;
+    align-items: center;
+    padding: 0px 70px 0px;
+    flex-direction: row;
+}
+.marca_rodape{
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+    justify-content: center;
+}
+.marca_rodape h2{
+    color: white;
+    font-family: "cormorantgaramond", sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+    margin: 0;
+}
+.marca_rodape p{
+    color: white;
+    font-family: "manrope", san;
+    font-size: 15px;
+    font-weight: 400;
+}
+.info_rodape{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 35%;
+    gap: 15%;
+}
+#nossa_marca{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+}
+#nossa_marca h3{
+    font-family: "cormorantgaramond", sans-serif;
+    font-size: 28px;
+    color: white;
+    margin-top: 0;
+}
+#nossa_marca a {
+    font-family: "manrope", sans-serif;
+    font-size: 18px;
+    text-decoration: none;
+    color: white;
+    margin-bottom: 10%;
+    width: fit-content;
+}
+#visite-nos{
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    width: 400px;
+
+}
+#visite-nos h3{
+    font-family: "cormorantgaramond", sans-serif;
+    font-size: 28px;
+    color: white;
+    margin: 0;
+}
+#visite-nos p{
+    font-weight: 250;
+    font-family: "manrope", sans-serif;
+    font-size: 18px;
+    color: white;
+    letter-spacing: 1px;
+    margin: 0;
+}
