@@ -1,13 +1,13 @@
 @font-face {
   font-family: "Manrope";
-  src: url("imagens_fonts/assets/fonts/manrope.ttf") format("truetype");
+  src: url("assets/fonts/manrope.ttf") format("truetype");
   font-weight: 200 800;
   font-display: swap;
 }
 
 @font-face {
   font-family: "Cormorant Garamond";
-  src: url("imagens_fonts/assets/fonts/cormorantgaramond.ttf") format("truetype");
+  src: url("assets/fonts/cormorantgaramond.ttf") format("truetype");
   font-weight: 300 700;
   font-display: swap;
 }
