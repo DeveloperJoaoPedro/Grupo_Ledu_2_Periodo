@@ -9,6 +9,9 @@
     <link rel="icon" href="../assets/fotos/logo-figma.png" type="image/png">
     <link rel="stylesheet" href="../global.css">
     <link rel="stylesheet" href="store.css">
+  <link rel="stylesheet" href="../assets/css/commerce.css">
+  <script type="module" src="../assets/js/catalogo.js"></script>
+  <script type="module" src="../assets/js/shared.js"></script>
 </head>
 
 <body data-brand="store">
@@ -34,16 +37,8 @@
                     <a href="../pizzas/pizza.html">Pizzas</a>
                 </li>
             </ul>
-            <div class="nav__actions">
-                <a class="icon-button" data-account="" href="../shared/login.html" aria-label="Entrar na sua conta">
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <circle cx="12" cy="12" r="9"></circle>
-                        <circle cx="12" cy="9" r="3"></circle>
-                        <path d="M6 18a6 6 0 0 1 12 0"></path>
-                    </svg>
-                </a>
-            </div>
-        </nav>
+        <a class="nav__bag" href="../sacola/sacola.html?marca=store" data-bag-link data-bag-brand="store" aria-label="Ver sacola"><img src="../assets/fotos/sacola-figma.png" alt="" width="24" height="24"><span data-bag-count>0</span></a>
+    </nav>
     </header>
     <main id="conteudo">
         <section class="hero hero--store" aria-labelledby="titulo">
@@ -65,109 +60,12 @@
                     <p class="section__eyebrow">Seleção Ledú</p>
                     <h2 class="section__title" id="favoritos">Novidades</h2>
                 </div>
-                <a href="#lista-produtos">Ver todos</a>
+                <a href="produtos.html">Ver todos</a>
             </div>
-            <p class="collection-note" id="sacola-nota">Compras e controles de quantidade estarão disponíveis em breve.
-            </p>
-            <div class="product-grid" id="lista-produtos" data-products="store">
-                <article class="product-card" data-product="blazer-iris" data-price="48900">
-                    <div class="product-card__media">
-                        <img class="product-card__image" src="../assets/fotos/store-hero.jpg"
-                            alt="Modelo vestindo blazer de alfaiataria vinho" width="1536" height="1024" loading="lazy">
-                    </div>
-                    <h3 class="product-card__name">Blazer Iris</h3>
-                    <p class="product-card__price">R$ 489,00</p>
-                    <!-- Implementar quantidade e sacola por produto. -->
-                    <div class="product-card__actions" aria-describedby="sacola-nota">
-                        <button class="icon-button" type="button" aria-label="Adicionar Blazer Iris à sacola">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M3 3h2l3 12h11l2-8H7M12 3v6m-3-3h6"></path>
-                                <circle cx="9" cy="20" r="1"></circle>
-                                <circle cx="18" cy="20" r="1"></circle>
-                            </svg>
-                        </button>
-                        <div class="quantity" role="group" aria-label="Quantidade de Blazer Iris">
-                            <button type="button" aria-label="Diminuir quantidade de Blazer Iris">−</button>
-                            <span aria-label="Quantidade atual: 1">1</span>
-                            <button type="button" aria-label="Aumentar quantidade de Blazer Iris">+</button>
-                        </div>
-                    </div>
-                </article>
-                <article class="product-card" data-product="conjunto-aurora" data-price="23900">
-                    <div class="product-card__media">
-                        <img class="product-card__image" src="../assets/fotos/conjunto-aurora.jpg" alt="Conjunto Aurora"
-                            width="504" height="901" loading="lazy">
-                    </div>
-                    <h3 class="product-card__name">Conjunto Aurora</h3>
-                    <p class="product-card__price">R$ 239,00</p>
-                    <!-- Implementar quantidade e sacola por produto. -->
-                    <div class="product-card__actions" aria-describedby="sacola-nota">
-                        <button class="icon-button" type="button"
-                            aria-label="Adicionar Conjunto Aurora à sacola">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M3 3h2l3 12h11l2-8H7M12 3v6m-3-3h6"></path>
-                                <circle cx="9" cy="20" r="1"></circle>
-                                <circle cx="18" cy="20" r="1"></circle>
-                            </svg>
-                        </button>
-                        <div class="quantity" role="group" aria-label="Quantidade de Conjunto Aurora">
-                            <button type="button"
-                                aria-label="Diminuir quantidade de Conjunto Aurora">−</button>
-                            <span aria-label="Quantidade atual: 1">1</span>
-                            <button type="button"
-                                aria-label="Aumentar quantidade de Conjunto Aurora">+</button>
-                        </div>
-                    </div>
-                </article>
-                <article class="product-card" data-product="vestido-yara" data-price="32900">
-                    <div class="product-card__media">
-                        <img class="product-card__image" src="../assets/fotos/vestido-yara.jpg" alt="Vestido Yara"
-                            width="504" height="901" loading="lazy">
-                    </div>
-                    <h3 class="product-card__name">Vestido Yara</h3>
-                    <p class="product-card__price">R$ 329,00</p>
-                    <!-- Implementar quantidade e sacola por produto. -->
-                    <div class="product-card__actions" aria-describedby="sacola-nota">
-                        <button class="icon-button" type="button" aria-label="Adicionar Vestido Yara à sacola">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M3 3h2l3 12h11l2-8H7M12 3v6m-3-3h6"></path>
-                                <circle cx="9" cy="20" r="1"></circle>
-                                <circle cx="18" cy="20" r="1"></circle>
-                            </svg>
-                        </button>
-                        <div class="quantity" role="group" aria-label="Quantidade de Vestido Yara">
-                            <button type="button" aria-label="Diminuir quantidade de Vestido Yara">−</button>
-                            <span aria-label="Quantidade atual: 1">1</span>
-                            <button type="button" aria-label="Aumentar quantidade de Vestido Yara">+</button>
-                        </div>
-                    </div>
-                </article>
-                <article class="product-card" data-product="vestido-serena" data-price="22000">
-                    <div class="product-card__media">
-                        <img class="product-card__image" src="../assets/fotos/vestido-serena.jpg" alt="Vestido Serena"
-                            width="504" height="901" loading="lazy">
-                    </div>
-                    <h3 class="product-card__name">Vestido Serena</h3>
-                    <p class="product-card__price">R$ 220,00</p>
-                    <!-- Implementar quantidade e sacola por produto. -->
-                    <div class="product-card__actions" aria-describedby="sacola-nota">
-                        <button class="icon-button" type="button"
-                            aria-label="Adicionar Vestido Serena à sacola">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M3 3h2l3 12h11l2-8H7M12 3v6m-3-3h6"></path>
-                                <circle cx="9" cy="20" r="1"></circle>
-                                <circle cx="18" cy="20" r="1"></circle>
-                            </svg>
-                        </button>
-                        <div class="quantity" role="group" aria-label="Quantidade de Vestido Serena">
-                            <button type="button" aria-label="Diminuir quantidade de Vestido Serena">−</button>
-                            <span aria-label="Quantidade atual: 1">1</span>
-                            <button type="button" aria-label="Aumentar quantidade de Vestido Serena">+</button>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </section>
+            <p class="status" data-status role="status"></p>
+      <div class="product-grid" id="lista-produtos" data-products="store"><p>Carregando produtos…</p></div>
+      <noscript><p>Ative o JavaScript para consultar os produtos.</p></noscript>
+    </section>
     </main>
     <footer class="site-footer" data-footer="">
         <div class="container footer">

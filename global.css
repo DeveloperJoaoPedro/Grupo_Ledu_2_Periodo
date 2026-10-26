@@ -24,7 +24,6 @@
   --surface-store: #fff3e0;
   --surface-wine: #fae8e9;
   --surface-pizzas: #f7d5ab;
-  --surface-login: #fdf3ee;
   --success: #32623b;
   --error: #9e2431;
   --accent: var(--ink);
@@ -304,13 +303,14 @@ textarea::placeholder {
   min-height: 90px;
   margin-inline: auto;
   padding-inline: 1rem;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
-  justify-content: space-between;
   gap: 2rem;
 }
 
 .nav__logo {
+  justify-self: start;
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -329,6 +329,10 @@ textarea::placeholder {
 
 .nav__links {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  min-width: 0;
   gap: clamp(2rem, 5vw, 7rem);
   list-style: none;
   margin: 0;
@@ -336,6 +340,9 @@ textarea::placeholder {
 }
 
 .nav__links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
   color: #39101e99;
   font-size: 14px;
   text-decoration: none;
@@ -344,10 +351,6 @@ textarea::placeholder {
 .nav__links a:hover,
 .nav__links a[aria-current] {
   color: var(--ink);
-}
-
-.nav__actions {
-  display: flex;
 }
 
 .icon-button {
@@ -435,6 +438,18 @@ textarea::placeholder {
   line-height: 30px;
 }
 
+@media (max-width: 1000px) {
+  .nav {
+    grid-template-columns: 1fr;
+    gap: .5rem;
+    padding-block: .5rem;
+  }
+
+  .nav__links {
+    justify-content: center;
+  }
+}
+
 @media (max-width: 800px) {
   .nav {
     flex-wrap: wrap;
@@ -454,9 +469,10 @@ textarea::placeholder {
   .nav__links {
     order: 3;
     width: 100%;
-    justify-content: space-between;
-    gap: .75rem;
-    padding-block: .5rem;
+    justify-content: center;
+    gap: .25rem .75rem;
+    margin: 0;
+    padding-block: 0;
   }
 
   .footer {
@@ -470,4 +486,22 @@ textarea::placeholder {
   .footer__description {
     font-size: 16px;
   }
+}
+/* Sacola sem login; a terceira coluna conserva os links no centro da nav. */
+.nav__bag { justify-self: end; display: inline-flex; align-items: center; gap: .5rem; min-height: var(--tap); min-width: var(--tap); justify-content: center; text-decoration: none; }
+.nav__bag img { width: 24px; height: 24px; object-fit: contain; }
+.nav__bag span { font-size: var(--text-xs); min-width: 1rem; text-align: center; }
+.status { color: var(--error); font-size: var(--text-sm); overflow-wrap: anywhere; }
+.status:empty { display: none; }
+.confirmation { padding: 1.5rem; margin-block: 1.5rem; border: 1px solid var(--success); border-radius: var(--radius-md); }
+.confirmation h2 { margin-bottom: .5rem; color: var(--success); }
+@media (max-width: 1000px) {
+  .nav { grid-template-columns: minmax(0, 1fr) auto; }
+  .nav__links { grid-column: 1 / -1; grid-row: 2; }
+  .nav__bag { grid-column: 2; grid-row: 1; }
+}
+@media (max-width: 400px) {
+  .footer { grid-template-columns: 1fr; }
+  .footer__identity { gap: 1rem; }
+  .footer__logo { margin-left: 0; }
 }

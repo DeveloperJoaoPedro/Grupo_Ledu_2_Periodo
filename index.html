@@ -8,6 +8,7 @@
   <link rel="icon" href="assets/fotos/logo-figma.png" type="image/png">
   <link rel="stylesheet" href="global.css">
   <link rel="stylesheet" href="home.css">
+  <script type="module" src="assets/js/shared.js"></script>
 </head>
 <body>
   <header class="site-header">
@@ -32,15 +33,7 @@
           <a href="pizzas/pizza.html">Pizzas</a>
         </li>
       </ul>
-      <div class="nav__actions">
-        <a class="icon-button" data-account="" href="shared/login.html" aria-label="Entrar na sua conta">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="12" cy="12" r="9"></circle>
-            <circle cx="12" cy="9" r="3"></circle>
-            <path d="M6 18a6 6 0 0 1 12 0"></path>
-          </svg>
-        </a>
-      </div>
+    <a class="nav__bag" href="sacola/sacola.html?marca=store" data-bag-link data-bag-brand="store" aria-label="Ver sacola"><img src="assets/fotos/sacola-figma.png" alt="" width="24" height="24"><span data-bag-count>0</span></a>
     </nav>
   </header>
   <main id="conteudo">
@@ -82,7 +75,7 @@
       <div class="footer__identity">
         <div class="footer__logo">
           <img src="assets/fotos/logo-claro-figma.png" width="1024" height="1024" alt="Logo do Grupo Ledú">
-          <a href="https://www.instagram.com/leduwine/" aria-label="Ledú Wine no Instagram"><img class="footer__social"
+          <a href="https://www.instagram.com/leduwine/" aria-label="Ledú Wine no Instagram" target="_blank" rel="noopener noreferrer"><img class="footer__social"
               src="assets/fotos/instagram-figma.svg" width="24" height="24" alt="Instagram do Ledú Wine"></a>
         </div>
         <div>

@@ -1,0 +1,157 @@
+{
+  "products": [
+    {
+      "id": "blazer-iris",
+      "brand": "store",
+      "name": "Blazer Iris",
+      "category": "Alfaiataria",
+      "price": 48900,
+      "image": "blazer-iris-figma.png",
+      "description": "Alfaiataria para acompanhar diferentes momentos do seu dia. Uma peça de presença para combinar com a sua história.",
+      "sizes": [
+        "P",
+        "M",
+        "G",
+        "GG"
+      ],
+      "color": "Vinho",
+      "featured": true,
+      "position": "37% center",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "conjunto-aurora",
+      "brand": "store",
+      "name": "Conjunto Aurora",
+      "category": "Conjuntos",
+      "price": 23900,
+      "image": "conjunto-aurora.jpg",
+      "description": "Um conjunto feminino com personalidade, para compor o visual com naturalidade. Use as peças juntas ou crie novas combinações.",
+      "sizes": [
+        "P",
+        "M",
+        "G",
+        "GG"
+      ],
+      "color": "Bordô",
+      "featured": true,
+      "width": 504,
+      "height": 901
+    },
+    {
+      "id": "vestido-yara",
+      "brand": "store",
+      "name": "Vestido Yara",
+      "category": "Vestidos",
+      "price": 32900,
+      "image": "vestido-yara.jpg",
+      "description": "Uma proposta feminina para encontros e ocasiões especiais. O Vestido Yara traz presença e versatilidade ao seu guarda-roupa.",
+      "sizes": [
+        "P",
+        "M",
+        "G",
+        "GG"
+      ],
+      "color": "Marrom",
+      "featured": true,
+      "width": 504,
+      "height": 901
+    },
+    {
+      "id": "vestido-serena",
+      "brand": "store",
+      "name": "Vestido Serena",
+      "category": "Vestidos",
+      "price": 22000,
+      "image": "vestido-serena.jpg",
+      "description": "Vestido Serena une elegância e conforto com um design fluido, caimento leve e detalhes delicados que valorizam a silhueta com sofisticação. É a escolha perfeita para se sentir pronta e estilosa em qualquer ocasião.",
+      "sizes": [
+        "P",
+        "M",
+        "G",
+        "GG"
+      ],
+      "color": "Azul",
+      "featured": true,
+      "width": 504,
+      "height": 901
+    },
+    {
+      "id": "barolo",
+      "brand": "wine",
+      "name": "Barolo",
+      "category": "Tintos",
+      "price": 14900,
+      "image": "barolo.jpg",
+      "description": "Um rótulo da seleção Ledú Wine para acompanhar conversas e encontros à mesa. Consulte nossa equipe para conhecer a safra e as características da garrafa disponível.",
+      "volume": "750 ml",
+      "featured": true,
+      "width": 1080,
+      "height": 1303
+    },
+    {
+      "id": "chianti",
+      "brand": "wine",
+      "name": "Chianti",
+      "category": "Tintos",
+      "price": 11800,
+      "image": "chianti.jpg",
+      "description": "Um convite para descobrir novos sabores e compartilhar bons momentos. Consulte nossa equipe para conhecer a safra e as características da garrafa disponível.",
+      "volume": "750 ml",
+      "featured": true,
+      "width": 235,
+      "height": 384
+    },
+    {
+      "id": "garzon",
+      "brand": "wine",
+      "name": "Garzon",
+      "category": "Tintos",
+      "price": 22900,
+      "image": "garzon.jpg",
+      "description": "Um vinho para celebrar o cotidiano, escolhido para a curadoria Ledú. Consulte nossa equipe para conhecer a safra e as características da garrafa disponível.",
+      "volume": "750 ml",
+      "featured": true,
+      "width": 1200,
+      "height": 1500
+    },
+    {
+      "id": "kagor",
+      "brand": "wine",
+      "name": "Kagor",
+      "category": "Tintos",
+      "price": 9600,
+      "image": "kagor.jpg",
+      "description": "Um rótulo para completar sua mesa e tornar os encontros especiais. Consulte nossa equipe para conhecer as características da garrafa disponível.",
+      "volume": "750 ml",
+      "featured": true,
+      "width": 562,
+      "height": 842
+    },
+    {
+      "id": "pergola-suave",
+      "brand": "wine",
+      "name": "Vinho Tinto Pérgola Suave",
+      "category": "Tintos suaves",
+      "price": 14900,
+      "image": "pergola-figma.png",
+      "description": "Vinho tinto suave da seleção Ledú Wine. Uma opção para compartilhar bons momentos à mesa. Consulte nossa equipe para conhecer as características da garrafa disponível.",
+      "volume": "750 ml",
+      "featured": false,
+      "width": 1536,
+      "height": 1024
+    }
+  ],
+  "shippingCents": 500,
+  "coupons": {
+    "store": {
+      "code": "LEDUSTORE10",
+      "percent": 10
+    },
+    "wine": {
+      "code": "LEDUWINE10",
+      "percent": 10
+    }
+  }
+}

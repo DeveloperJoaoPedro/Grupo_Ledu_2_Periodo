@@ -9,6 +9,9 @@
   <link rel="icon" href="../assets/fotos/logo-figma.png" type="image/png">
   <link rel="stylesheet" href="../global.css">
   <link rel="stylesheet" href="wine.css">
+  <link rel="stylesheet" href="../assets/css/commerce.css">
+  <script type="module" src="../assets/js/catalogo.js"></script>
+  <script type="module" src="../assets/js/shared.js"></script>
 </head>
 
 <body data-brand="wine">
@@ -34,15 +37,7 @@
           <a href="../pizzas/pizza.html">Pizzas</a>
         </li>
       </ul>
-      <div class="nav__actions">
-        <a class="icon-button" data-account="" href="../shared/login.html" aria-label="Entrar na sua conta">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="12" cy="12" r="9"></circle>
-            <circle cx="12" cy="9" r="3"></circle>
-            <path d="M6 18a6 6 0 0 1 12 0"></path>
-          </svg>
-        </a>
-      </div>
+    <a class="nav__bag" href="../sacola/sacola.html?marca=wine" data-bag-link data-bag-brand="wine" aria-label="Ver sacola"><img src="../assets/fotos/sacola-figma.png" alt="" width="24" height="24"><span data-bag-count>0</span></a>
     </nav>
   </header>
   <main id="conteudo">
@@ -64,102 +59,11 @@
           <p class="section__eyebrow">Seleção Ledú</p>
           <h2 class="section__title" id="favoritos">Favoritos</h2>
         </div>
-        <a href="#lista-vinhos">Ver todos</a>
+        <a href="produtos.html">Ver todos</a>
       </div>
-      <div class="product-grid" id="lista-vinhos" data-products="wine">
-        <article class="product-card" data-product="barolo" data-price="14900">
-          <div class="product-card__media">
-            <img class="product-card__image" src="../assets/fotos/barolo.jpg" alt="Vinho Barolo" width="1080"
-              height="1303" loading="lazy">
-          </div>
-          <h3 class="product-card__name">Barolo</h3>
-          <p class="product-card__price">R$ 149,00</p>
-          <!-- Implementar quantidade e sacola por produto. -->
-          <div class="product-card__actions" aria-describedby="sacola-nota">
-            <button class="icon-button" type="button" aria-label="Adicionar Barolo à sacola">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M3 3h2l3 12h11l2-8H7M12 3v6m-3-3h6"></path>
-                <circle cx="9" cy="20" r="1"></circle>
-                <circle cx="18" cy="20" r="1"></circle>
-              </svg>
-            </button>
-            <div class="quantity" role="group" aria-label="Quantidade de Barolo">
-              <button type="button" aria-label="Diminuir quantidade de Barolo">−</button>
-              <span aria-label="Quantidade atual: 1">1</span>
-              <button type="button" aria-label="Aumentar quantidade de Barolo">+</button>
-            </div>
-          </div>
-        </article>
-        <article class="product-card" data-product="chianti" data-price="14900">
-          <div class="product-card__media">
-            <img class="product-card__image" src="../assets/fotos/chianti.jpg" alt="Vinho Chianti" width="235"
-              height="384" loading="lazy">
-          </div>
-          <h3 class="product-card__name">Chianti</h3>
-          <p class="product-card__price">R$ 149,00</p>
-          <!-- Implementar quantidade e sacola por produto. -->
-          <div class="product-card__actions" aria-describedby="sacola-nota">
-            <button class="icon-button" type="button" aria-label="Adicionar Chianti à sacola">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M3 3h2l3 12h11l2-8H7M12 3v6m-3-3h6"></path>
-                <circle cx="9" cy="20" r="1"></circle>
-                <circle cx="18" cy="20" r="1"></circle>
-              </svg>
-            </button>
-            <div class="quantity" role="group" aria-label="Quantidade de Chianti">
-              <button type="button" aria-label="Diminuir quantidade de Chianti">−</button>
-              <span aria-label="Quantidade atual: 1">1</span>
-              <button type="button" aria-label="Aumentar quantidade de Chianti">+</button>
-            </div>
-          </div>
-        </article>
-        <article class="product-card" data-product="kagor" data-price="14900">
-          <div class="product-card__media">
-            <img class="product-card__image" src="../assets/fotos/kagor.jpg" alt="Vinho Kagor" width="562"
-              height="842" loading="lazy">
-          </div>
-          <h3 class="product-card__name">Kagor</h3>
-          <p class="product-card__price">R$ 149,00</p>
-          <!-- Implementar quantidade e sacola por produto. -->
-          <div class="product-card__actions" aria-describedby="sacola-nota">
-            <button class="icon-button" type="button" aria-label="Adicionar Kagor à sacola">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M3 3h2l3 12h11l2-8H7M12 3v6m-3-3h6"></path>
-                <circle cx="9" cy="20" r="1"></circle>
-                <circle cx="18" cy="20" r="1"></circle>
-              </svg>
-            </button>
-            <div class="quantity" role="group" aria-label="Quantidade de Kagor">
-              <button type="button" aria-label="Diminuir quantidade de Kagor">−</button>
-              <span aria-label="Quantidade atual: 1">1</span>
-              <button type="button" aria-label="Aumentar quantidade de Kagor">+</button>
-            </div>
-          </div>
-        </article>
-        <article class="product-card" data-product="garzon" data-price="14900">
-          <div class="product-card__media">
-            <img class="product-card__image" src="../assets/fotos/garzon.jpg" alt="Vinho Garzon" width="1200"
-              height="1500" loading="lazy">
-          </div>
-          <h3 class="product-card__name">Garzon</h3>
-          <p class="product-card__price">R$ 149,00</p>
-          <!-- Implementar quantidade e sacola por produto. -->
-          <div class="product-card__actions" aria-describedby="sacola-nota">
-            <button class="icon-button" type="button" aria-label="Adicionar Garzon à sacola">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M3 3h2l3 12h11l2-8H7M12 3v6m-3-3h6"></path>
-                <circle cx="9" cy="20" r="1"></circle>
-                <circle cx="18" cy="20" r="1"></circle>
-              </svg>
-            </button>
-            <div class="quantity" role="group" aria-label="Quantidade de Garzon">
-              <button type="button" aria-label="Diminuir quantidade de Garzon">−</button>
-              <span aria-label="Quantidade atual: 1">1</span>
-              <button type="button" aria-label="Aumentar quantidade de Garzon">+</button>
-            </div>
-          </div>
-        </article>
-      </div>
+      <p class="status" data-status role="status"></p>
+      <div class="product-grid" id="lista-vinhos" data-products="wine"><p>Carregando produtos…</p></div>
+      <noscript><p>Ative o JavaScript para consultar os produtos.</p></noscript>
     </section>
   </main>
   <footer class="site-footer" data-footer="">
@@ -167,7 +71,7 @@
       <div class="footer__identity">
         <div class="footer__logo">
           <img src="../assets/fotos/logo-claro-figma.png" width="1024" height="1024" alt="Logo do Grupo Ledú">
-          <a href="https://www.instagram.com/leduwine/" aria-label="Ledú Wine no Instagram"><img class="footer__social"
+          <a href="https://www.instagram.com/leduwine/" aria-label="Ledú Wine no Instagram" target="_blank" rel="noopener noreferrer"><img class="footer__social"
               src="../assets/fotos/instagram-figma.svg" width="24" height="24" alt=""></a>
         </div>
         <div>

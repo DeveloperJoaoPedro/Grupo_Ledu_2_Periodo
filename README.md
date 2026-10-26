@@ -1,45 +1,67 @@
 # Grupo Ledú — Store, Wine e Pizzas
 
-Projeto Integrador do curso de Sistemas de Informação do UNIPAM, para o Grupo Ledú de Carmo do Paranaíba, MG.
+Projeto Integrador de Sistemas de Informação do UNIPAM para o Grupo Ledú, de Carmo do Paranaíba, MG. Projeto somente frontend em HTML, CSS e JavaScript. O backend será implementado manualmente pela equipe.
 
-## Abrir o projeto
+## Executar
 
-Abra `index.html` no navegador para acessar a Home e navegar pelas três marcas. Também é possível abrir `store/store.html`, `wine/leduwine.html` ou `pizzas/pizza.html` diretamente. As páginas usam caminhos relativos e não precisam de instalação ou build.
+Na raiz, inicie um servidor estático (ou utilize o Live Server do VS Code):
 
-Para servir localmente, execute na raiz: `python3 -m http.server 8000`.
-Depois abra `http://localhost:8000/`.
+```bash
+python3 -m http.server 8000
+```
 
-## Onde editar
+Abra **http://localhost:8000/**. Módulos JavaScript e leitura do catálogo precisam de HTTP. Esse comando apenas serve os arquivos estáticos; não há API ou gravação de pedidos.
 
-| Tela ou recurso | Arquivo |
+## Páginas
+
+| Tela | Arquivos |
 | --- | --- |
-| Home do Grupo Ledú | `index.html` e `home.css` |
-| Home e coleção Store | `store/store.html` |
-| Estilos da Store | `store/store.css` |
-| Home e seleção Wine | `wine/leduwine.html` |
-| Estilos da Wine | `wine/wine.css` |
-| Home e sabores Pizzas | `pizzas/pizza.html` |
-| Estilos de Pizzas | `pizzas/pizza.css` |
-| Agendamento | `pizzas/agendamento.html` e `pizzas/agendamento.css` |
-| Fontes, cores, botões, cabeçalho e rodapé | `global.css` |
+| Home | `index.html`, `home.css` |
+| Store | `store/store.html`, `store/store.css` |
+| Todos os produtos da Store | `store/produtos.html` |
+| Wine | `wine/leduwine.html`, `wine/wine.css` |
+| Todos os vinhos | `wine/produtos.html` |
+| Produto, modelo único | `produto/produto.html?id=vestido-serena` |
+| Sacola Store | `sacola/sacola.html?marca=store` |
+| Sacola Wine | `sacola/sacola.html?marca=wine` |
+| Pizzas | `pizzas/pizza.html`, `pizzas/pizza.css` |
+| Agendamento de rodízio | `pizzas/agendamento.html`, `pizzas/agendamento.css` |
 
-Carregue `../global.css` antes do CSS da página. Store, Wine e Pizzas seguem as mesmas classes e variáveis visuais, com estilos específicos em cada pasta.
+Os detalhes de todas as roupas e vinhos usam o mesmo HTML, carregando o produto pelo `id`. As duas sacolas também usam um modelo compartilhado. Os links da navegação ficam centralizados, com a sacola na lateral e sem acesso de conta.
 
-## Imagens e fontes
+## Onde alterar dados e estilos
 
-`assets/fotos/` reúne todas as imagens locais, incluindo exportações com sufixo `-figma`; `assets/fonts/` contém as fontes e suas licenças. Os 40 arquivos de `imagens_fonts/assets/` foram transferidos e conferidos byte a byte antes da remoção da pasta antiga. Todas as páginas usam os novos caminhos relativos.
+- **`assets/data/catalogo.json`**: nomes, IDs, preços em centavos, categorias, fotos, descrições, tamanhos e cor; inclui frete e cupons de demonstração. `featured: true` exibe o produto na seleção da página de marca. Novos produtos aparecem automaticamente na listagem completa.
+- **`assets/fotos/`**: imagens locais. Depois de trocar uma foto no catálogo, atualize também `width` e `height` com as dimensões originais.
+- **`assets/fonts/`**: fontes locais e licenças.
+- **`global.css`**: tokens, fontes, botões, cabeçalho, navegação e rodapé.
+- **`assets/css/commerce.css`**: cards de produto, filtros, detalhes, tamanhos, sacola e finalização.
+- **`assets/js/core.js`**: catálogo, caminhos, moeda, sacola e funções compartilhadas.
+- **`assets/js/catalogo.js`**, **`produto.js`**, **`sacola.js`**, **`agendamento.js`**: comportamento das telas; **`shared.js`** atualiza o contador da sacola.
 
-A Home segue o frame `96:619` do Figma Grupo Ledú. As imagens `home-*-figma.png` são exportações locais do banner e dos três cards. Os cards já contêm seus textos na imagem original; os links incluem nomes e descrições acessíveis em HTML. Cabeçalho, rodapé, cores e fontes reutilizam `global.css`; o título do banner usa Manrope para manter as fontes locais do projeto.
+Para cadastrar um produto, copie um objeto do catálogo, defina um `id` único e preencha os dados. Use `brand: "store"` com `sizes` e `color` para roupa, ou `brand: "wine"` com `volume` para vinho. Não é necessário criar um novo HTML. As quatro roupas e os cinco vinhos incluem o produto Pérgola da tela de detalhes do Figma.
 
-A Store usa as fotos de Conjunto Aurora, Vestido Yara e Vestido Serena. Como não há foto exclusiva do Blazer Iris, seu card reaproveita a imagem de alfaiataria do banner, com enquadramento próprio.
+## Fluxos implementados
 
-## Etapa atual e pendências
+- Listagens completas por marca, com busca, categoria, ordenação, estado vazio e filtros na URL.
+- Produto dinâmico; seleção obrigatória de tamanho nas roupas; quantidade entre 1 e 99; links inválidos mostram um estado de produto não encontrado.
+- Sacolas separadas por marca no `localStorage`, com tamanho por item, quantidades, remoção com opção de desfazer e persistência ao navegar ou recarregar.
+- Cupons `LEDUSTORE10` e `LEDUWINE10` aplicam 10% ao subtotal. Frete demonstrativo de R$ 5,00 para entrega e R$ 0,00 para retirada; altere esses dados no catálogo.
+- Formulário de finalização com nome, telefone, entrega/retirada, endereço e confirmação de maioridade para vinhos. A simulação não envia dados e mantém os itens na sacola.
+- Formulário de agendamento com resumo atualizado e validações no navegador. A simulação não envia nem salva dados.
 
-As páginas são HTML e CSS, sem JavaScript ou backend. Os quatro rótulos e os preços de R$ 149,00 foram mantidos da versão recebida.
+## Backend a implementar
 
-- Os controles de quantidade e sacola da Store e da Wine estão desabilitados até a implementação do JavaScript; os atributos `data-*` indicam os pontos de integração.
-- O formulário de agendamento ainda não envia dados nem atualiza o resumo.
-- O link de conta (`shared/login.html`) aguarda a criação dessa página.
-- A Home conecta Store, Wine e Pizzas; todas as marcas retornam à Home pelo link Grupo Ledú. Pizzas também oferece acesso ao agendamento.
+Não há servidor de aplicação, rotas de API, banco de dados ou persistência de pedidos e agendamentos. Os pontos de envio estão indicados nos eventos `submit` de `assets/js/sacola.js` e `assets/js/agendamento.js`.
 
-Para continuar, implementar quantidade e sacola por produto, cálculos em centavos e persistência; depois validação, atualização do resumo e envio do agendamento. Nunca salvar senhas em `localStorage`.
+O catálogo JSON é um arquivo estático utilizado pelo frontend. A sacola usa apenas o `localStorage` do navegador. Preços, cupons e frete são demonstrativos; cálculos e validações atuais servem à interface. A equipe deverá implementar validações no servidor, persistência e processamento ao desenvolver o backend.
+
+## Referência visual
+
+Figma Grupo Ledú, arquivo `wWTk33aZFLswh1JUPAmleN`. Home `96:619`, Store `96:515`, Wine `96:410`, Pizzas `96:567`, produto Store `109:708`, produto Wine `100:572`, agendamento `109:884`, sacola Store `112:771` e sacola Wine `199:124`. A tela de login foi excluída do escopo. As listagens completas seguem os tokens e cards dessas páginas.
+
+Imagens são locais; não há dependência de URLs temporárias do Figma. Os cards da Home contêm texto na imagem original e têm nomes e descrições acessíveis em HTML. O projeto usa Manrope e Cormorant Garamond do `global.css`.
+
+## Verificar
+
+Com o servidor estático aberto, confira a navegação, os filtros, a seleção de tamanho, as quantidades e as sacolas das duas marcas. Os formulários devem mostrar o aviso de demonstração sem enviar dados ou esvaziar a sacola.

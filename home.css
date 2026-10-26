@@ -1,6 +1,7 @@
 /* Home: Figma 96:619. Componentes compartilhados ficam em global.css. */
 .home-hero {
   position: relative;
+  width: 100%;
   max-width: var(--page-width);
   min-height: 360px;
   aspect-ratio: 1920 / 707;
