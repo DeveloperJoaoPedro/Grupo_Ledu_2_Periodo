@@ -141,6 +141,19 @@
       "featured": false,
       "width": 1536,
       "height": 1024
+    },
+    {
+      "id": "sasi-siuchi",
+      "brand": "wine",
+      "name": "Vinho Tinto Sasi Siuchi",
+      "category": "Tintos",
+      "price": 27900,
+      "image": "sasi-siuchi.jpeg",
+      "description": "Vinho tinto suave da seleção Ledú Wine. Uma opção para compartilhar bons momentos à mesa. Consulte nossa equipe para conhecer as características da garrafa disponível.",
+      "volume": "750 ml",
+      "featured": false,
+      "width": 1536,
+      "height": 1024
     }
   ],
   "shippingCents": 500,

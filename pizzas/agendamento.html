@@ -5,16 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Agende seu rodízio | Ledú Pizzas</title>
     <link rel="icon" href="../assets/fotos/logo-figma.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="../global.css">
     <link rel="stylesheet" href="agendamento.css">
     <script type="module" src="../assets/js/shared.js"></script>
   <script type="module" src="../assets/js/agendamento.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </head>
   <body data-brand="pizzas">
     <header class="site-header" data-header="">
       <a class="skip-link button" href="#conteudo">Pular para o conteúdo</a>
       <div class="announcement">Carmo do Paranaíba, Minas Gerais · Uma casa, três experiências</div>
-      <nav class="nav" aria-label="Navegação principal">
+      <nav class="site-nav" aria-label="Navegação principal">
         <a class="nav__logo" href="pizza.html" aria-label="Ledú Pizzas — início">
           <img src="../assets/fotos/logo-figma.png" width="48" height="48" alt="">
           <span>Ledú Pizzas</span>
@@ -46,7 +48,7 @@
         <h1 class="sr-only">Agende seu rodízio</h1>
         <p class="sr-only">Escolha os detalhes da experiência para reunir todo mundo à mesa.</p>
       </div>
-      <form class="container booking__layout" data-booking-form="">
+      <form class="ledu-container booking__layout" data-booking-form="">
         <div class="booking__fields">
           <fieldset>
             <legend>1. Quando será?</legend>
@@ -117,13 +119,13 @@
             </li>
           </ul>
           <p class="notice" id="agendamento-nota">Demonstração do formulário. Nenhum agendamento será enviado ou salvo.</p>
-          <button class="button button--full" type="submit" aria-describedby="agendamento-nota">Simular agendamento</button>
+          <button class="button button--full" type="submit" aria-describedby="agendamento-nota">Confirmar agendamento</button>
         <p class="status" data-booking-status role="status"></p>
         </aside>
       </form>
     </main>
     <footer class="site-footer" data-footer="">
-      <div class="container footer">
+      <div class="ledu-container footer">
         <div class="footer__identity">
           <div class="footer__logo">
             <img src="../assets/fotos/logo-claro-figma.png" width="62" height="62" alt="">

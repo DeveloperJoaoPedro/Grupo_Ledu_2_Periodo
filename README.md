@@ -10,7 +10,15 @@ Na raiz, inicie um servidor estático (ou utilize o Live Server do VS Code):
 python3 -m http.server 8000
 ```
 
-Abra **http://localhost:8000/**. Módulos JavaScript e leitura do catálogo precisam de HTTP. Esse comando apenas serve os arquivos estáticos; não há API ou gravação de pedidos.
+Abra **http://localhost:8000/**. Módulos JavaScript precisam de HTTP. A leitura de produtos usa a API do Supabase e requer acesso à internet. Esse comando apenas serve os arquivos estáticos; não há gravação de pedidos.
+
+## Bootstrap
+
+O projeto usa **Bootstrap 5.3.8** por meio de links CDN em cada HTML, sem npm ou etapa de build. O CSS é carregado antes dos estilos do projeto e o JavaScript bundle, que inclui Popper, é carregado com `defer`. É necessário acesso à internet para carregar a biblioteca.
+
+Para novos componentes, use classes como `btn`, `btn-primary`, `row`, `col-md-6` e `form-control`. Componentes interativos podem usar os atributos `data-bs-*`, conforme a [documentação oficial](https://getbootstrap.com/docs/5.3/getting-started/introduction/).
+
+O layout existente usa `ledu-container` e `site-nav` para evitar conflitos com as classes `container` e `nav` do Bootstrap. Os estilos próprios continuam após o Bootstrap para manter as personalizações da marca. Ao atualizar a biblioteca, atualize a versão e os valores de integridade do CSS e do JavaScript em cada HTML.
 
 ## Páginas
 
@@ -31,12 +39,12 @@ Os detalhes de todas as roupas e vinhos usam o mesmo HTML, carregando o produto 
 
 ## Onde alterar dados e estilos
 
-- **`assets/data/catalogo.json`**: nomes, IDs, preços em centavos, categorias, fotos, descrições, tamanhos e cor; inclui frete e cupons de demonstração. `featured: true` exibe o produto na seleção da página de marca. Novos produtos aparecem automaticamente na listagem completa.
+- **Tabela `produtos` no Supabase**: nomes, IDs, preços em centavos, categorias, fotos, descrições, tamanhos e cor. `destaque: true` exibe o produto na seleção da página de marca. Novos produtos aparecem automaticamente na listagem completa. `assets/data/catalogo.json` é apenas uma cópia anterior e não alimenta as páginas.
 - **`assets/fotos/`**: imagens locais. Depois de trocar uma foto no catálogo, atualize também `width` e `height` com as dimensões originais.
 - **`assets/fonts/`**: fontes locais e licenças.
 - **`global.css`**: tokens, fontes, botões, cabeçalho, navegação e rodapé.
 - **`assets/css/commerce.css`**: cards de produto, filtros, detalhes, tamanhos, sacola e finalização.
-- **`assets/js/core.js`**: catálogo, caminhos, moeda, sacola e funções compartilhadas.
+- **`assets/js/core.js`**: consulta à API do Supabase, regras demonstrativas de frete e cupons, caminhos, moeda, sacola e funções compartilhadas.
 - **`assets/js/catalogo.js`**, **`produto.js`**, **`sacola.js`**, **`agendamento.js`**: comportamento das telas; **`shared.js`** atualiza o contador da sacola.
 
 Para cadastrar um produto, copie um objeto do catálogo, defina um `id` único e preencha os dados. Use `brand: "store"` com `sizes` e `color` para roupa, ou `brand: "wine"` com `volume` para vinho. Não é necessário criar um novo HTML. As quatro roupas e os cinco vinhos incluem o produto Pérgola da tela de detalhes do Figma.
@@ -52,9 +60,9 @@ Para cadastrar um produto, copie um objeto do catálogo, defina um `id` único e
 
 ## Backend a implementar
 
-Não há servidor de aplicação, rotas de API, banco de dados ou persistência de pedidos e agendamentos. Os pontos de envio estão indicados nos eventos `submit` de `assets/js/sacola.js` e `assets/js/agendamento.js`.
+Os produtos são lidos do banco Supabase pela Data API. Ainda não há servidor de aplicação próprio nem persistência de pedidos e agendamentos. Os pontos de envio estão indicados nos eventos `submit` de `assets/js/sacola.js` e `assets/js/agendamento.js`.
 
-O catálogo JSON é um arquivo estático utilizado pelo frontend. A sacola usa apenas o `localStorage` do navegador. Preços, cupons e frete são demonstrativos; cálculos e validações atuais servem à interface. A equipe deverá implementar validações no servidor, persistência e processamento ao desenvolver o backend.
+O catálogo de produtos vem da tabela `produtos` no Supabase; o arquivo JSON local é somente uma cópia anterior. A sacola usa apenas o `localStorage` do navegador. Preços, cupons e frete são demonstrativos; cálculos e validações atuais servem à interface. A equipe deverá implementar validações no servidor, persistência e processamento ao desenvolver o backend.
 
 ## Referência visual
 

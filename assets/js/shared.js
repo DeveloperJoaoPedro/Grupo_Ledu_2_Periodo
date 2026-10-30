@@ -1,4 +1,4 @@
-import { updateBagCount } from './core.js';
+import { updateBagCount } from "./core.js";
 updateBagCount();
-window.addEventListener('pageshow', updateBagCount);
-window.addEventListener('storage', updateBagCount);
+window.addEventListener("pageshow", updateBagCount);
+window.addEventListener("storage", updateBagCount);

@@ -1,21 +1,28 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Revise os itens da sua sacola e explore a demonstração de finalização.">
   <title>Sua sacola · Grupo Ledú</title>
   <link rel="icon" href="../assets/fotos/logo-figma.png" type="image/png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   <link rel="stylesheet" href="../global.css">
   <link rel="stylesheet" href="../assets/css/commerce.css">
   <script type="module" src="../assets/js/sacola.js"></script>
   <script type="module" src="../assets/js/shared.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
 </head>
+
 <body data-brand="store">
   <header class="site-header">
     <a class="skip-link button" href="#conteudo">Pular para o conteúdo</a>
     <div class="announcement">Carmo do Paranaíba, Minas Gerais · Uma casa, três experiências</div>
-    <nav class="nav" aria-label="Navegação principal">
+    <nav class="site-nav" aria-label="Navegação principal">
       <a class="nav__logo" href="../store/store.html" aria-label="Ledú Store — início">
         <img src="../assets/fotos/logo-figma.png" width="1254" height="1254" alt="">
         <span>Ledú Store</span>
@@ -34,35 +41,79 @@
           <a href="../pizzas/pizza.html">Pizzas</a>
         </li>
       </ul>
-    <a class="nav__bag" href="../sacola/sacola.html?marca=store" data-bag-link data-bag-brand="store" aria-label="Ver sacola"><img src="../assets/fotos/sacola-figma.png" alt="" width="24" height="24"><span data-bag-count>0</span></a>
+      <a class="nav__bag" href="../sacola/sacola.html?marca=store" data-bag-link data-bag-brand="store"
+        aria-label="Ver sacola"><img src="../assets/fotos/sacola-figma.png" alt="" width="24" height="24"><span
+          data-bag-count>0</span></a>
     </nav>
   </header>
   <main id="conteudo" class="cart-page page-shell">
     <p class="eyebrow" data-brand-label>Ledú Store</p>
-    <h1>Sua sacola</h1><p class="cart-intro">Revise seus itens antes de finalizar.</p>
-    <nav class="bag-tabs" aria-label="Sacolas por marca"><a href="sacola.html?marca=store">Sacola Store</a><a href="sacola.html?marca=wine">Sacola Wine</a></nav>
-    <p class="status" data-status role="status"></p><button class="text-button" type="button" data-undo hidden>Desfazer remoção</button>
-    <div class="empty-state" data-empty-cart hidden><h2>Sua sacola está vazia</h2><p>Escolha seus favoritos na seleção Ledú.</p><a class="button" data-continue href="../store/produtos.html">Ver todos os produtos</a></div>
+    <h1>Sua sacola</h1>
+    <p class="cart-intro">Revise seus itens antes de finalizar.</p>
+    <nav class="bag-tabs" aria-label="Sacolas por marca"><a href="sacola.html?marca=store">Sacola Store</a><a
+        href="sacola.html?marca=wine">Sacola Wine</a></nav>
+    <p class="status" data-status role="status"></p><button class="text-button" type="button" data-undo hidden>Desfazer
+      remoção</button>
+    <div class="empty-state" data-empty-cart hidden>
+      <h2>Sua sacola está vazia</h2>
+      <p>Escolha seus favoritos na seleção Ledú.</p><a class="button" data-continue href="../store/produtos.html">Ver
+        todos os produtos</a>
+    </div>
     <div class="cart-layout" data-cart-content>
-      <div data-cart><p>Carregando sacola…</p></div>
-      <aside class="cart-summary" aria-labelledby="resumo"><h2 id="resumo">Resumo</h2>
-        <dl><div><dt>Subtotal</dt><dd data-total="subtotal">R$ 0,00</dd></div><div><dt>Frete</dt><dd data-total="shipping">R$ 0,00</dd></div><div><dt>Desconto</dt><dd data-total="discount">R$ 0,00</dd></div></dl>
-        <form class="coupon-form" data-coupon-form><label for="cupom">Cupom de desconto</label><div><input id="cupom" name="cupom" maxlength="30" placeholder="Digite seu cupom" autocapitalize="characters"><button type="submit" class="button button--secondary">Aplicar</button></div><p data-coupon-note></p></form>
-        <div class="cart-total"><h3>Total</h3><p data-total="total">R$ 0,00</p></div>
-        <button class="button button--full" type="button" data-open-checkout>Finalizar compra</button><a class="cart-continue" data-continue href="../store/produtos.html">Continuar comprando</a>
+      <div data-cart>
+        <p>Carregando sacola…</p>
+      </div>
+      <aside class="cart-summary" aria-labelledby="resumo">
+        <h2 id="resumo">Resumo</h2>
+        <dl>
+          <div>
+            <dt>Subtotal</dt>
+            <dd data-total="subtotal">R$ 0,00</dd>
+          </div>
+          <div>
+            <dt>Frete</dt>
+            <dd data-total="shipping">R$ 0,00</dd>
+          </div>
+          <div>
+            <dt>Desconto</dt>
+            <dd data-total="discount">R$ 0,00</dd>
+          </div>
+        </dl>
+        <form class="coupon-form" data-coupon-form><label for="cupom">Cupom de desconto</label>
+          <div><input id="cupom" name="cupom" maxlength="30" placeholder="Digite seu cupom"
+              autocapitalize="characters"><button type="submit" class="button button--secondary">Aplicar</button></div>
+          <p data-coupon-note></p>
+        </form>
+        <div class="cart-total">
+          <h3>Total</h3>
+          <p data-total="total">R$ 0,00</p>
+        </div>
+        <button class="button button--full" type="button" data-open-checkout>Finalizar compra</button><a
+          class="cart-continue" data-continue href="../store/produtos.html">Continuar comprando</a>
       </aside>
     </div>
-    <noscript><p>Ative o JavaScript para consultar sua sacola.</p></noscript>
   </main>
   <dialog class="checkout" data-checkout aria-labelledby="checkout-title">
-    <div class="checkout__heading"><h2 id="checkout-title">Finalizar pedido</h2><button type="button" class="icon-button" data-close-checkout aria-label="Fechar finalização">×</button></div>
+    <div class="checkout__heading">
+      <h2 id="checkout-title">Finalizar pedido</h2><button type="button" class="icon-button" data-close-checkout
+        aria-label="Fechar finalização">×</button>
+    </div>
     <p>Demonstração do formulário de pedido. Os dados não serão enviados ou salvos.</p>
     <form>
-      <div class="field"><label for="checkout-nome">Nome</label><input id="checkout-nome" name="nome" autocomplete="name" minlength="2" maxlength="80" required></div>
-      <div class="field"><label for="checkout-telefone">Telefone com DDD</label><input id="checkout-telefone" name="telefone" type="tel" autocomplete="tel" minlength="10" maxlength="22" pattern="[+()0-9 .-]+" placeholder="(34) 99999-9999" required></div>
-      <div class="field"><label for="delivery">Como deseja receber?</label><select id="delivery" name="delivery"><option value="entrega">Entrega em Carmo do Paranaíba</option><option value="retirada">Retirada na loja · sem frete</option></select></div>
-      <div class="field"><label for="checkout-endereco">Endereço em Carmo do Paranaíba</label><input id="checkout-endereco" name="endereco" autocomplete="street-address" minlength="5" maxlength="180" placeholder="Rua, número e bairro" required></div>
-      <label class="checkbox-field" data-adult-field hidden><input type="checkbox" name="adult">Confirmo que tenho 18 anos ou mais.</label>
+      <div class="field"><label for="checkout-nome">Nome</label><input id="checkout-nome" name="nome"
+          autocomplete="name" minlength="2" maxlength="80" required></div>
+      <div class="field"><label for="checkout-telefone">Telefone com DDD</label><input id="checkout-telefone"
+          name="telefone" type="tel" autocomplete="tel" minlength="10" maxlength="22" pattern="[+()0-9 .-]+"
+          placeholder="(34) 99999-9999" required></div>
+      <div class="field"><label for="delivery">Como deseja receber?</label><select id="delivery" name="delivery">
+          <option value="entrega">Entrega em Carmo do Paranaíba</option>
+          <option value="retirada">Retirada na loja · sem frete</option>
+        </select></div>
+      <div class="field"><label for="checkout-endereco">Endereço em Carmo do Paranaíba</label><input
+          id="checkout-endereco" name="endereco" autocomplete="street-address" minlength="5" maxlength="180"
+          placeholder="Rua, número e bairro" required></div>
+      <label class="checkbox-field" data-adult-field hidden><input type="checkbox" name="adult">Confirmo que tenho 18
+        anos ou mais.</label>
       <div class="cart-total"><span>Total do pedido</span><strong data-total="total">R$ 0,00</strong></div>
       <p class="status" data-checkout-status role="status"></p>
       <button class="button button--full" type="submit">Simular finalização</button>
@@ -70,12 +121,13 @@
     </form>
   </dialog>
   <footer class="site-footer" data-footer="">
-    <div class="container footer">
+    <div class="ledu-container footer">
       <div class="footer__identity">
         <div class="footer__logo">
           <img src="../assets/fotos/logo-claro-figma.png" width="1024" height="1024" alt="Logo do Grupo Ledú">
-          <a href="https://www.instagram.com/leduwine/" aria-label="Ledú Wine no Instagram" target="_blank" rel="noopener noreferrer"><img class="footer__social"
-              src="../assets/fotos/instagram-figma.svg" width="24" height="24" alt="Instagram do Ledú Wine"></a>
+          <a href="https://www.instagram.com/leduwine/" aria-label="Ledú Wine no Instagram" target="_blank"
+            rel="noopener noreferrer"><img class="footer__social" src="../assets/fotos/instagram-figma.svg" width="24"
+              height="24" alt="Instagram do Ledú Wine"></a>
         </div>
         <div>
           <p class="footer__title">Grupo Ledú</p>
@@ -97,4 +149,5 @@
     </div>
   </footer>
 </body>
+
 </html>
