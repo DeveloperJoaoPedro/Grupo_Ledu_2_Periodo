@@ -1,5 +1,8 @@
+import { validatePhone } from "./whatsapp.js";
+import { orderPayload, saveOrder } from "./pedidos.js";
 import {
   getCatalog,
+  productImageURL,
   setBrand,
   brandName,
   siteURL,
@@ -25,6 +28,9 @@ let catalog,
   items = [],
   coupon = "",
   removed;
+let submitting = false;
+let pendingOrder = null;
+let lastReceipt = null;
 // Salva apenas os dados necessários para reconstruir a sacola.
 function saveItems() {
   const savedItems = [];
@@ -62,7 +68,7 @@ function render() {
   root.innerHTML = items
     .map(
       (item, index) =>
-        `<article class="cart-item"><a class="cart-item__image" href="${detailURL(item.id)}"><img src="${siteURL(`assets/fotos/${item.product.image}`)}" width="${item.product.width}" height="${item.product.height}" alt="${escapeHTML(item.product.name)}"></a><div class="cart-item__info"><h2><a href="${detailURL(item.id)}">${escapeHTML(item.product.name)}</a></h2><p>${item.size ? `Tamanho ${escapeHTML(item.size)} · ${escapeHTML(item.product.color)}` : escapeHTML(item.product.volume)}</p>${quantityMarkup(item.product.name, item.quantity)}</div><div class="cart-item__price"><p>${money(item.product.price * item.quantity)}</p><button class="text-button" type="button" data-remove="${index}" aria-label="Remover ${escapeHTML(item.product.name)}${item.size ? ` tamanho ${item.size}` : ""}">Remover</button></div></article>`,
+        `<article class="cart-item"><a class="cart-item__image" href="${detailURL(item.id)}"><img src="${escapeHTML(productImageURL(item.product.image))}" width="${item.product.width}" height="${item.product.height}" alt="${escapeHTML(item.product.name)}"></a><div class="cart-item__info"><h2><a href="${detailURL(item.id)}">${escapeHTML(item.product.name)}</a></h2><p>${item.size ? `Tamanho ${escapeHTML(item.size)} · ${escapeHTML(item.product.color)}` : escapeHTML(item.product.volume)}</p>${quantityMarkup(item.product.name, item.quantity)}</div><div class="cart-item__price"><p>${money(item.product.price * item.quantity)}</p><button class="text-button" type="button" data-remove="${index}" aria-label="Remover ${escapeHTML(item.product.name)}${item.size ? ` tamanho ${item.size}` : ""}">Remover</button></div></article>`,
     )
     .join("");
   root.querySelectorAll(".cart-item").forEach((row, index) => {
@@ -145,7 +151,12 @@ document
   .addEventListener("input", (event) => event.target.setCustomValidity(""));
 document.querySelector("[data-open-checkout]").addEventListener("click", () => {
   document.querySelector("[data-checkout-status]").textContent = "";
-  updateSummary();
+  if (lastReceipt) pendingOrder = null;
+  lastReceipt = null;
+  form.querySelector('button[type="submit"]').disabled = false;
+  render();
+
+  if (!items.length) return;
   dialog.showModal();
 });
 document.querySelector("[data-close-checkout]").addEventListener("click", () => dialog.close());
@@ -155,16 +166,54 @@ delivery.addEventListener("change", () => {
   address.closest(".field").hidden = !address.required;
   updateSummary();
 });
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-  if (!form.reportValidity()) return;
-  // Implementar o envio quando o backend estiver disponível.
-  document.querySelector("[data-checkout-status]").textContent =
-    "Demonstração: nenhum pedido foi enviado ou salvo. Os itens continuam na sacola.";
+const checkoutStatus = document.querySelector("[data-checkout-status]");
+
+form.addEventListener("input", () => {
+  form.elements.telefone.setCustomValidity("");
 });
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  if (submitting || lastReceipt) return;
+  validatePhone(form.elements.telefone);
+  if (!form.reportValidity()) return;
+  render();
+  if (!items.length) {
+    checkoutStatus.textContent = "Sua sacola está vazia. Escolha os produtos antes de continuar.";
+    return;
+  }
+  const customer = Object.fromEntries(new FormData(form));
+  const payload = orderPayload({ brand, items, customer, coupon, expectedTotal: calculate().total, reference: null });
+  const fingerprint = JSON.stringify(payload);
+  if (pendingOrder?.fingerprint !== fingerprint) {
+    pendingOrder = { fingerprint, id: crypto.randomUUID() };
+  }
+  payload.p_referencia = pendingOrder.id;
+  submitting = true;
+  const controls = [...form.elements, document.querySelector("[data-close-checkout]")];
+  const enabled = controls.filter((control) => !control.disabled);
+  enabled.forEach((control) => control.disabled = true);
+  checkoutStatus.textContent = "Registrando pedido…";
+  try {
+    lastReceipt = await saveOrder(payload);
+    checkoutStatus.textContent = `Pedido registrado! Protocolo: ${lastReceipt.id}. Total: ${money(lastReceipt.total_centavos)}. A equipe entrará em contato para confirmar disponibilidade e pagamento.`;
+    const submitted = items.map(({ id, size, quantity }) => ({ id, size, quantity }));
+    if (JSON.stringify(readBag(brand)) === JSON.stringify(submitted)) {
+      try { writeBag(brand, []); } catch {}
+    }
+    render();
+    dialog.querySelector('[data-total="total"]').textContent = money(lastReceipt.total_centavos);
+  } catch (error) {
+    checkoutStatus.textContent = error.message;
+  } finally {
+    submitting = false;
+    enabled.forEach((control) => control.disabled = false);
+    if (lastReceipt) form.querySelector('button[type="submit"]').disabled = true;
+  }
+});
+dialog.addEventListener("cancel", (event) => { if (submitting) event.preventDefault(); });
 window.addEventListener("storage", (event) => {
   if (event.key === `ledu:sacola:${brand}` && catalog) {
-    if (dialog.open) dialog.close();
+    if (dialog.open && !submitting) dialog.close();
     render();
   }
 });

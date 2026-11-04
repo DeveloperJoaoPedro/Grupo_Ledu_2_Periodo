@@ -1,3 +1,4 @@
+import { bookingMessage, prepareWhatsApp, wireMessageCopy } from "./whatsapp.js";
 const form = document.querySelector("[data-booking-form]");
 const status = document.querySelector("[data-booking-status]");
 const date = form.elements.data;
@@ -41,12 +42,14 @@ function update() {
 form.addEventListener("input", () => {
   update();
   status.textContent = "";
+  form.querySelector("[data-whatsapp-preview]").hidden = true;
 });
+wireMessageCopy(form, status);
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   update();
   if (!form.reportValidity()) return;
-  // Implementar o envio quando o backend estiver disponível.
-  status.textContent = "Agendamento enviado com sucesso, entraremos em contato em breve.";
+  const data = Object.fromEntries(new FormData(form));
+  prepareWhatsApp(form, "pizzas", bookingMessage(data), status);
 });
 update();

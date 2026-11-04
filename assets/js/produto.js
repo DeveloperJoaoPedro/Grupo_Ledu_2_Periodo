@@ -1,5 +1,6 @@
 import {
   getCatalog,
+  productImageURL,
   setBrand,
   brandName,
   brandHome,
@@ -29,10 +30,10 @@ try {
     document.querySelector('meta[name="description"]').content = product.description;
     let quantity = clampQuantity(params.get("qtd") || 1);
     root.innerHTML = `<nav class="breadcrumb" aria-label="Caminho da página"><a href="${siteURL(brandHome(product.brand))}">${brandName(product.brand)}</a><span aria-hidden="true">/</span><a href="${listURL(product.brand)}">Todos os produtos</a></nav>
-      <div class="product-detail"><div class="product-detail__media" data-detail-id="${product.id}"><img src="${siteURL(`assets/fotos/${product.image}`)}" alt="${escapeHTML(product.name)}" width="${product.width}" height="${product.height}" fetchpriority="high"></div>
+      <div class="product-detail"><div class="product-detail__media" data-detail-id="${escapeHTML(product.id)}"><img src="${escapeHTML(productImageURL(product.image))}" alt="${escapeHTML(product.name)}" width="${product.width}" height="${product.height}" fetchpriority="high"></div>
       <div class="product-detail__copy"><p class="product-detail__category">${escapeHTML(product.category)}</p><h1>${escapeHTML(product.name)}</h1><p class="product-detail__price">${money(product.price)}</p>
       <p class="product-detail__description">${escapeHTML(product.description)}</p>
-      <form data-product-form>${product.sizes ? `<fieldset class="size-picker"><legend>Tamanho:</legend><div>${product.sizes.map((size) => `<label><input type="radio" name="tamanho" value="${size}" required><span>${size}</span></label>`).join("")}</div></fieldset><p class="product-detail__variant">Cor: ${escapeHTML(product.color)}</p>` : `<p class="product-detail__variant">Volume: ${escapeHTML(product.volume)}</p>`}
+      <form data-product-form>${product.sizes ? `<fieldset class="size-picker"><legend>Tamanho:</legend><div>${product.sizes.map((size) => `<label><input type="radio" name="tamanho" value="${escapeHTML(size)}" required><span>${escapeHTML(size)}</span></label>`).join("")}</div></fieldset><p class="product-detail__variant">Cor: ${escapeHTML(product.color)}</p>` : `<p class="product-detail__variant">Volume: ${escapeHTML(product.volume)}</p>`}
       <div class="product-detail__actions">${quantityMarkup(product.name, quantity)}<button class="button" type="submit"><img src="${siteURL("assets/fotos/sacola-botao-figma.png")}" width="37" height="53" alt="">Adicionar à sacola</button></div></form>
       <p class="availability">✓ Disponível em Carmo do Paranaíba – MG</p><a class="product-detail__bag" href="${bagURL(product.brand)}">Ver minha sacola</a></div></div>`;
     wireQuantity(root, (value) => {

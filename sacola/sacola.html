@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Revise os itens da sua sacola e explore a demonstração de finalização.">
+  <meta name="description" content="Revise os itens e envie seu pedido para a equipe Ledú.">
   <title>Sua sacola · Grupo Ledú</title>
   <link rel="icon" href="../assets/fotos/logo-figma.png" type="image/png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
@@ -88,17 +88,17 @@
           <h3>Total</h3>
           <p data-total="total">R$ 0,00</p>
         </div>
-        <button class="button button--full" type="button" data-open-checkout>Finalizar compra</button><a
+        <button class="button button--full" type="button" data-open-checkout>Continuar pedido</button><a
           class="cart-continue" data-continue href="../store/produtos.html">Continuar comprando</a>
       </aside>
     </div>
   </main>
   <dialog class="checkout" data-checkout aria-labelledby="checkout-title">
     <div class="checkout__heading">
-      <h2 id="checkout-title">Finalizar pedido</h2><button type="button" class="icon-button" data-close-checkout
+      <h2 id="checkout-title">Seus dados para o pedido</h2><button type="button" class="icon-button" data-close-checkout
         aria-label="Fechar finalização">×</button>
     </div>
-    <p>Demonstração do formulário de pedido. Os dados não serão enviados ou salvos.</p>
+    <p>Preencha seus dados para registrar a solicitação. A equipe confirmará a disponibilidade e combinará o pagamento.</p>
     <form>
       <div class="field"><label for="checkout-nome">Nome</label><input id="checkout-nome" name="nome"
           autocomplete="name" minlength="2" maxlength="80" required></div>
@@ -112,12 +112,18 @@
       <div class="field"><label for="checkout-endereco">Endereço em Carmo do Paranaíba</label><input
           id="checkout-endereco" name="endereco" autocomplete="street-address" minlength="5" maxlength="180"
           placeholder="Rua, número e bairro" required></div>
+      <div class="field"><label for="checkout-complemento">Complemento (opcional)</label><input id="checkout-complemento" name="complemento" maxlength="80" placeholder="Casa, apartamento…"></div>
+      <div class="field"><label for="checkout-pagamento">Forma de pagamento desejada</label><select id="checkout-pagamento" name="pagamento" required>
+        <option value="">Escolha uma opção</option><option value="pix">Pix</option><option value="dinheiro">Dinheiro</option><option value="cartao">Cartão na entrega/retirada</option>
+      </select></div>
+      <div class="field"><label for="checkout-observacoes">Observações (opcional)</label><textarea id="checkout-observacoes" name="observacoes" rows="2" maxlength="500" placeholder="Ex.: horário de preferência para entrega"></textarea></div>
       <label class="checkbox-field" data-adult-field hidden><input type="checkbox" name="adult">Confirmo que tenho 18
         anos ou mais.</label>
       <div class="cart-total"><span>Total do pedido</span><strong data-total="total">R$ 0,00</strong></div>
       <p class="status" data-checkout-status role="status"></p>
-      <button class="button button--full" type="submit">Simular finalização</button>
-      <p class="checkout__note">O envio de pedidos será disponibilizado após a implementação do backend.</p>
+      <button class="button button--full" type="submit">Registrar pedido</button>
+      <p class="checkout__note">A escolha do pagamento não realiza cobrança online. A equipe confirmará sua solicitação.</p>
+
     </form>
   </dialog>
   <footer class="site-footer" data-footer="">
@@ -145,6 +151,7 @@
       <div>
         <h2 class="footer__heading">Visite-nos</h2>
         <address>Rua Costa Junior, 440 – Centro<br>Carmo do Paranaíba – MG<br>CEP: 38840-024<br>Brasil</address>
+        <p class="footer__access"><a href="../admin/index.html">Área da equipe</a></p>
       </div>
     </div>
   </footer>

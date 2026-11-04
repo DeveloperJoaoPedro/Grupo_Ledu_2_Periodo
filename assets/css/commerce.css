@@ -1,4 +1,4 @@
-/* Catálogo, detalhes e sacola: mesmos tokens e componentes das páginas de marca. */
+
 .page-shell {
   width: min(100%, var(--page-width));
   margin-inline: auto;

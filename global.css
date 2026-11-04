@@ -563,3 +563,12 @@ textarea::placeholder {
     margin-left: 0;
   }
 }
+/* Resumo que o cliente pode revisar ou copiar antes de enviar no WhatsApp. */
+.whatsapp-preview { margin-top: 1rem; min-width: 0; }
+.whatsapp-preview label { display: block; margin-bottom: .5rem; font-weight: 600; }
+.whatsapp-preview textarea { display: block; width: 100%; font-size: .9rem; line-height: 1.5; }
+.whatsapp-preview__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: .75rem; }
+
+[data-checkout-status] { overflow-wrap: anywhere; }
+
+.footer__access { margin-top: 1rem; }

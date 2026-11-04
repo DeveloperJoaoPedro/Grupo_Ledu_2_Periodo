@@ -1,4 +1,5 @@
-// Caminhos relativos ao módulo: funcionam em qualquer pasta ou subdiretório hospedado.
+import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, REGRAS_LOJA } from "./config.js";
+
 export const siteURL = (path = "") => new URL(`../../${path}`, import.meta.url).href;
 export const money = (cents) =>
   new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(cents / 100);
@@ -21,20 +22,6 @@ export function clampQuantity(value) {
   return quantity;
 }
 
-// A chave publicável identifica o site; as permissões são controladas pelo RLS do Supabase.
-const SUPABASE_URL = "https://kapjduafhofblzlsloki.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_dyUjCxcKAxMlXxZcZ4uNdQ_blBbPQpf";
-
-// Frete e cupons continuam demonstrativos até a implementação do backend de pedidos.
-const demoRules = {
-  shippingCents: 500,
-  coupons: {
-    store: { code: "LEDUSTORE10", percent: 100 },
-    wine: { code: "LEDUWINE10", percent: 100 },
-  },
-};
-
-// Busca os produtos na API do Supabase uma vez por página.
 let catalog;
 export async function getCatalog() {
   if (!catalog) {
@@ -44,7 +31,7 @@ export async function getCatalog() {
     if (!response.ok) throw new Error("Não foi possível carregar o catálogo do Supabase.");
     const rows = await response.json();
     catalog = {
-      ...demoRules,
+      ...REGRAS_LOJA,
       products: rows.map((row) => ({
         id: row.id,
         brand: row.marca,
@@ -156,10 +143,16 @@ export function wireQuantity(root, onChange) {
     if (onChange) onChange(value);
   });
 }
+// Fotos antigas são arquivos locais. As cadastradas no painel vêm do Storage.
+export function productImageURL(image) {
+  if (typeof image === "string" && image.startsWith("https://")) return image;
+  return siteURL(`assets/fotos/${image}`);
+}
+
 export function cardMarkup(product) {
   const url = detailURL(product.id);
   return `<article class="product-card" data-product="${escapeHTML(product.id)}">
-    <a class="product-card__media" href="${url}" aria-label="Ver ${escapeHTML(product.name)}"><img class="product-card__image" src="${siteURL(`assets/fotos/${product.image}`)}" alt="${escapeHTML(product.name)}" width="${product.width}" height="${product.height}" loading="lazy"></a>
+    <a class="product-card__media" href="${url}" aria-label="Ver ${escapeHTML(product.name)}"><img class="product-card__image" src="${escapeHTML(productImageURL(product.image))}" alt="${escapeHTML(product.name)}" width="${product.width}" height="${product.height}" loading="lazy"></a>
     <h3 class="product-card__name"><a href="${url}">${escapeHTML(product.name)}</a></h3><p class="product-card__price">${money(product.price)}</p>
     <div class="product-card__actions"><button class="icon-button" type="button" data-card-add aria-label="${product.brand === "store" ? "Escolher tamanho de" : "Adicionar à sacola:"} ${escapeHTML(product.name)}"><img src="${siteURL("assets/fotos/adicionar-sacola-figma.svg")}" alt="" width="33" height="33"></button>${quantityMarkup(product.name)}</div></article>`;
 }

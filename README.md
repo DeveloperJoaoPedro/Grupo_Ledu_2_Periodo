@@ -1,6 +1,6 @@
 # Grupo Ledú — Store, Wine e Pizzas
 
-Projeto Integrador de Sistemas de Informação do UNIPAM para o Grupo Ledú, de Carmo do Paranaíba, MG. Projeto somente frontend em HTML, CSS e JavaScript. O backend será implementado manualmente pela equipe.
+Projeto Integrador de Sistemas de Informação do UNIPAM para o Grupo Ledú, de Carmo do Paranaíba, MG. Site em HTML, CSS e JavaScript. Store e Wine registram pedidos no painel. Pizzas recebe solicitações pelo WhatsApp. O cliente não precisa de login e não há pagamento online. O painel administrativo usa Supabase Auth para cadastrar, editar e excluir produtos.
 
 ## Executar
 
@@ -10,7 +10,7 @@ Na raiz, inicie um servidor estático (ou utilize o Live Server do VS Code):
 python3 -m http.server 8000
 ```
 
-Abra **http://localhost:8000/**. Módulos JavaScript precisam de HTTP. A leitura de produtos usa a API do Supabase e requer acesso à internet. Esse comando apenas serve os arquivos estáticos; não há gravação de pedidos.
+Abra **http://localhost:8000/**. Módulos JavaScript precisam de HTTP. A leitura de produtos usa a API do Supabase e requer acesso à internet. Esse comando apenas serve os arquivos estáticos; o recebimento de pedidos Store/Wine depende da ativação dos scripts SQL descritos abaixo.
 
 ## Bootstrap
 
@@ -24,6 +24,7 @@ O layout existente usa `ledu-container` e `site-nav` para evitar conflitos com a
 
 | Tela | Arquivos |
 | --- | --- |
+| Administração | `admin/index.html`, `admin/admin.css`, `assets/js/admin.js` |
 | Home | `index.html`, `home.css` |
 | Store | `store/store.html`, `store/store.css` |
 | Todos os produtos da Store | `store/produtos.html` |
@@ -39,37 +40,51 @@ Os detalhes de todas as roupas e vinhos usam o mesmo HTML, carregando o produto 
 
 ## Onde alterar dados e estilos
 
-- **Tabela `produtos` no Supabase**: nomes, IDs, preços em centavos, categorias, fotos, descrições, tamanhos e cor. `destaque: true` exibe o produto na seleção da página de marca. Novos produtos aparecem automaticamente na listagem completa. `assets/data/catalogo.json` é apenas uma cópia anterior e não alimenta as páginas.
+- **Tabela `produtos` no Supabase**: nomes, IDs, preços em centavos, categorias, fotos, descrições, tamanhos e cor. `destaque: true` exibe o produto na seleção da página de marca. Novos produtos aparecem automaticamente na listagem completa.
 - **`assets/fotos/`**: imagens locais. Depois de trocar uma foto no catálogo, atualize também `width` e `height` com as dimensões originais.
 - **`assets/fonts/`**: fontes locais e licenças.
 - **`global.css`**: tokens, fontes, botões, cabeçalho, navegação e rodapé.
 - **`assets/css/commerce.css`**: cards de produto, filtros, detalhes, tamanhos, sacola e finalização.
-- **`assets/js/core.js`**: consulta à API do Supabase, regras demonstrativas de frete e cupons, caminhos, moeda, sacola e funções compartilhadas.
+- **`assets/js/core.js`**: consulta à API do Supabase, caminhos, imagens, moeda, sacola e funções compartilhadas.
+- **`assets/js/config.js`**: WhatsApp de Pizzas, frete, cupons e configuração publicável do Supabase.
+- **`assets/js/whatsapp.js`**: mensagem de solicitação do rodízio.
+- **`assets/js/admin.js`**: login exclusivo da equipe, cadastro e edição de produtos com foto.
+- **`assets/js/pedidos.js`**: envio dos pedidos Store/Wine.
+- **`assets/js/admin-pedidos.js`**: consulta dos pedidos e mudança de status.
 - **`assets/js/catalogo.js`**, **`produto.js`**, **`sacola.js`**, **`agendamento.js`**: comportamento das telas; **`shared.js`** atualiza o contador da sacola.
 
-Para cadastrar um produto, copie um objeto do catálogo, defina um `id` único e preencha os dados. Use `brand: "store"` com `sizes` e `color` para roupa, ou `brand: "wine"` com `volume` para vinho. Não é necessário criar um novo HTML. As quatro roupas e os cinco vinhos incluem o produto Pérgola da tela de detalhes do Figma.
+Para cadastrar um produto, use `/admin/` depois de configurar o acesso. O formulário gera o ID e identifica as dimensões da foto. Roupas precisam de tamanhos e cor; vinhos precisam de volume. Não é necessário criar um novo HTML.
 
 ## Fluxos implementados
 
 - Listagens completas por marca, com busca, categoria, ordenação, estado vazio e filtros na URL.
 - Produto dinâmico; seleção obrigatória de tamanho nas roupas; quantidade entre 1 e 99; links inválidos mostram um estado de produto não encontrado.
 - Sacolas separadas por marca no `localStorage`, com tamanho por item, quantidades, remoção com opção de desfazer e persistência ao navegar ou recarregar.
-- Cupons `LEDUSTORE10` e `LEDUWINE10` aplicam 10% ao subtotal. Frete demonstrativo de R$ 5,00 para entrega e R$ 0,00 para retirada; altere esses dados no catálogo.
-- Formulário de finalização com nome, telefone, entrega/retirada, endereço e confirmação de maioridade para vinhos. A simulação não envia dados e mantém os itens na sacola.
-- Formulário de agendamento com resumo atualizado e validações no navegador. A simulação não envia nem salva dados.
+- Cupons `LEDUSTORE10` e `LEDUWINE10` aplicam 10% ao subtotal. Frete demonstrativo de R$ 5,00 para entrega e R$ 0,00 para retirada; altere esses dados em `assets/js/config.js`.
+- Formulário de finalização com nome, telefone, entrega/retirada, endereço e confirmação de maioridade para vinhos. O botão registra o pedido e os itens no banco e mostra um protocolo. A sacola só é limpa após a confirmação, e é preservada em caso de falha.
+- Formulário de agendamento com resumo atualizado e validações no navegador. O botão prepara a solicitação pelo WhatsApp, sem confirmar uma reserva automaticamente.
 
-## Backend a implementar
+## Ativar pedidos e administração
 
-Os produtos são lidos do banco Supabase pela Data API. Ainda não há servidor de aplicação próprio nem persistência de pedidos e agendamentos. Os pontos de envio estão indicados nos eventos `submit` de `assets/js/sacola.js` e `assets/js/agendamento.js`.
+**Banco ativado e acesso da equipe autorizado.** A exclusão de produtos também está aplicada, restrita a administradores e preservando os pedidos antigos. `database/ativar-site.sql` reúne a configuração para consulta e reaplicação neste projeto.
 
-O catálogo de produtos vem da tabela `produtos` no Supabase; o arquivo JSON local é somente uma cópia anterior. A sacola usa apenas o `localStorage` do navegador. Preços, cupons e frete são demonstrativos; cálculos e validações atuais servem à interface. A equipe deverá implementar validações no servidor, persistência e processamento ao desenvolver o backend.
+- Store e Wine: cadastro do pedido com contato, endereço ou retirada, complemento, pagamento desejado e observações. Preços e totais são conferidos no banco. Só administradores podem consultar os dados pessoais.
+- `/admin/`: consulta e mudança de status, filtro por marca e cadastro, edição e exclusão de produtos.
+- Pizzas: WhatsApp configurado em `assets/js/config.js` com o número informado pela equipe.
+- Conta `joaopedroolialves08@gmail.com` criada, e-mail confirmado e login validado. A senha não está no projeto.
+
+Não há gateway de pagamento. A escolha entre Pix, dinheiro e cartão registra apenas a preferência do cliente. A equipe combina a confirmação e o recebimento.
+
+Veja o [guia de configuração e manutenção](docs/COMO-ALTERAR-O-SITE.md). Os pedidos ficam salvos no banco e podem ser consultados no painel.
 
 ## Referência visual
 
-Figma Grupo Ledú, arquivo `wWTk33aZFLswh1JUPAmleN`. Home `96:619`, Store `96:515`, Wine `96:410`, Pizzas `96:567`, produto Store `109:708`, produto Wine `100:572`, agendamento `109:884`, sacola Store `112:771` e sacola Wine `199:124`. A tela de login foi excluída do escopo. As listagens completas seguem os tokens e cards dessas páginas.
+Figma Grupo Ledú, arquivo `wWTk33aZFLswh1JUPAmleN`. Home `96:619`, Store `96:515`, Wine `96:410`, Pizzas `96:567`, produto Store `109:708`, produto Wine `100:572`, agendamento `109:884`, sacola Store `112:771` e sacola Wine `199:124`. Não há login para clientes; o login existe apenas no painel administrativo. As listagens completas seguem os tokens e cards dessas páginas.
 
 Imagens são locais; não há dependência de URLs temporárias do Figma. Os cards da Home contêm texto na imagem original e têm nomes e descrições acessíveis em HTML. O projeto usa Manrope e Cormorant Garamond do `global.css`.
 
 ## Verificar
 
-Com o servidor estático aberto, confira a navegação, os filtros, a seleção de tamanho, as quantidades e as sacolas das duas marcas. Os formulários devem mostrar o aviso de demonstração sem enviar dados ou esvaziar a sacola.
+Para conferir o funcionamento, veja o fluxo Store/Wine até o protocolo e a aparição do pedido no painel. Em caso de erro, a sacola deve ser preservada. Verifique filtro por marca e mudança de status. Em Pizzas, confira o resumo e a abertura do WhatsApp.
+
+Para conhecer o banco, veja [Onde ficam os dados no Supabase](docs/BANCO-DE-DADOS.md).

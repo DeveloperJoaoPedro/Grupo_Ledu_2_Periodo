@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Administração · Grupo Ledú</title>
+  <link rel="icon" href="../assets/fotos/logo-figma.png" type="image/png">
+  <link rel="stylesheet" href="../global.css">
+  <link rel="stylesheet" href="admin.css">
+  <script src="../assets/vendor/supabase-2.119.0.js"></script>
+  <script type="module" src="../assets/js/admin.js"></script>
+</head>
+
+<body>
+  <a class="skip-link button" href="#conteudo">Pular para o conteúdo</a>
+  <header class="site-header">
+    <div class="announcement">Grupo Ledú · Área da equipe</div>
+    <nav class="site-nav admin-nav" aria-label="Navegação administrativa">
+      <a class="nav__logo" href="../index.html"><img src="../assets/fotos/logo-figma.png" width="1254" height="1254"
+          alt=""><span>Ledú</span></a>
+      <a href="../index.html">Voltar para a loja</a>
+    </nav>
+  </header>
+  <main id="conteudo" class="admin-page">
+    <p class="admin-eyebrow">Catálogo</p>
+    <h1>Administração</h1>
+    <p class="admin-intro">Acompanhe os pedidos e mantenha o catálogo da Store e da Wine.</p>
+    <p class="admin-status" data-admin-status role="status">Verificando acesso…</p>
+    <section class="admin-login" data-login-panel aria-labelledby="entrar">
+      <h2 id="entrar">Acesso da equipe</h2>
+      <p>Entre com o e-mail autorizado para administrar os produtos.</p>
+      <form data-login-form>
+        <div class="admin-field"><label for="email">E-mail</label><input id="email" name="email" type="email"
+            autocomplete="username" maxlength="254" required></div>
+        <div class="admin-field"><label for="senha">Senha</label><input id="senha" name="senha" type="password"
+            autocomplete="current-password" required></div>
+        <button class="button" type="submit">Entrar</button>
+      </form>
+      <p class="admin-hint">O responsável pelo projeto cria e autoriza as contas da equipe.</p>
+      <noscript>Ative o JavaScript para acessar o painel.</noscript>
+    </section>
+    <section data-admin-panel hidden aria-label="Gerenciamento de produtos">
+      <div class="admin-toolbar">
+        <p>Conectado como <strong data-user-email></strong></p><button class="button button--secondary" data-logout
+          type="button">Sair</button>
+      </div>
+      <section class="admin-orders" aria-labelledby="pedidos-titulo">
+        <h2 id="pedidos-titulo">Pedidos recebidos</h2>
+        <div class="admin-orders-toolbar">
+          <div class="admin-field"><label for="pedidos-marca">Marca</label><select id="pedidos-marca" data-orders-brand>
+              <option value="">Todas</option>
+              <option value="store">Store</option>
+              <option value="wine">Wine</option>
+            </select></div>
+          <button class="button button--secondary" type="button" data-reload-orders>Atualizar pedidos</button>
+        </div>
+        <p class="admin-status" data-orders-status role="status"></p>
+        <div data-orders-list></div>
+      </section>
+      <div class="admin-layout">
+        <section aria-labelledby="produto-titulo">
+          <h2 id="produto-titulo" data-form-title>Novo produto</h2>
+          <p class="admin-hint">Depois de salvar, o produto já pode aparecer no catálogo público.</p>
+          <form data-product-form>
+            <div class="admin-row">
+              <div class="admin-field"><label for="marca">Marca</label><select id="marca" name="marca">
+                  <option value="store">Ledú Store</option>
+                  <option value="wine">Ledú Wine</option>
+                </select></div>
+              <div class="admin-field"><label for="preco">Preço (R$)</label><input id="preco" name="preco"
+                  inputmode="decimal" placeholder="149,90" maxlength="12" required aria-describedby="preco-dica"><small
+                  id="preco-dica">Use vírgula ou ponto nos centavos, sem separador de milhar.</small></div>
+            </div>
+            <div class="admin-field"><label for="nome">Nome do produto</label><input id="nome" name="nome" minlength="2"
+                maxlength="100" required></div>
+            <div class="admin-field"><label for="categoria">Categoria</label><input id="categoria" name="categoria"
+                placeholder="Ex.: Vestidos ou Tinto" maxlength="60" required></div>
+            <div class="admin-field"><label for="descricao">Descrição</label><textarea id="descricao" name="descricao"
+                rows="4" minlength="10" maxlength="2000" required></textarea></div>
+            <div data-store-fields>
+              <div class="admin-field"><label for="tamanhos">Tamanhos disponíveis</label><input id="tamanhos"
+                  name="tamanhos" placeholder="P, M, G, GG" maxlength="100" required><small>Separe cada tamanho com
+                  vírgula.</small></div>
+              <div class="admin-field"><label for="cor">Cor</label><input id="cor" name="cor" maxlength="60" required>
+              </div>
+            </div>
+            <div class="admin-field" data-wine-fields hidden><label for="volume">Volume</label><input id="volume"
+                name="volume" placeholder="750 ml" maxlength="40"></div>
+            <div class="admin-field"><label for="foto">Foto do produto</label><input id="foto" name="foto" type="file"
+                accept="image/jpeg,image/png,image/webp" required aria-describedby="foto-dica"><small
+                id="foto-dica">JPG, PNG ou WebP de até 5 MB. Ao editar, deixe vazio para manter a foto.</small></div>
+            <img class="admin-photo" data-photo-preview alt="Prévia da foto do produto" width="320" height="400" hidden>
+            <label class="admin-check"><input type="checkbox" name="destaque">Mostrar entre os destaques da
+              marca</label>
+            <div class="admin-form-actions"><button class="button" data-save-product type="submit">Salvar
+                produto</button><button class="button button--secondary" data-cancel-edit type="button" hidden>Cancelar
+                edição</button></div>
+          </form>
+        </section>
+        <section aria-labelledby="cadastrados">
+          <h2 id="cadastrados" tabindex="-1">Produtos cadastrados</h2>
+          <p class="admin-hint">Edite os dados ou exclua um produto. Pedidos antigos são preservados.</p>
+          <div class="admin-table-wrap">
+            <table>
+              <caption class="sr-only">Catálogo da Store e da Wine</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Produto</th>
+                  <th scope="col">Marca</th>
+                  <th scope="col">Preço</th>
+                  <th scope="col">Ação</th>
+                </tr>
+              </thead>
+              <tbody data-product-list></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>
